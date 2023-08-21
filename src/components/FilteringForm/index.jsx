@@ -101,6 +101,7 @@ const FilteringForm = () => {
             <Form.Item style={sx.noBottomMargin}>
               <Form.Item className={styles.inlineItems} style={sx.rightMargin}>
                 <Select placeholder="Engine">
+                  <Select.Option value=""></Select.Option>
                   <Select.Option value="deno1">Patrol</Select.Option>
                   <Select.Option value="deno2">Diesel</Select.Option>
                   <Select.Option value="deno3">Hybrid</Select.Option>
@@ -108,6 +109,7 @@ const FilteringForm = () => {
               </Form.Item>
               <Form.Item className={styles.inlineItems}>
                 <Select placeholder="Drive Configuration Selector">
+                  <Select.Option value=""></Select.Option>
                   <Select.Option value="demo1">Front-wheel drive</Select.Option>
                   <Select.Option value="demo2">Back-wheel-drive</Select.Option>
                   <Select.Option value="demo3">Full-wheel-drive</Select.Option>
@@ -117,11 +119,13 @@ const FilteringForm = () => {
             <Space.Compact>
               <Form.Item className={styles.flexGrow}>
                 <Select placeholder="Milage from">
+                  <Select.Option value=""></Select.Option>
                   <Select.Option value="demo">Demo</Select.Option>
                 </Select>
               </Form.Item>
               <Form.Item className={styles.flexGrow}>
                 <Select placeholder="to">
+                  <Select.Option value=""></Select.Option>
                   <Select.Option value="demo">Demo</Select.Option>
                 </Select>
               </Form.Item>
@@ -129,11 +133,13 @@ const FilteringForm = () => {
             <Space.Compact>
               <Form.Item className={styles.flexGrow} style={sx.noBottomMargin}>
                 <Select placeholder="Acceleration from">
+                  <Select.Option value=""></Select.Option>
                   <Select.Option value="demo">Demo</Select.Option>
                 </Select>
               </Form.Item>
               <Form.Item className={styles.flexGrow} style={sx.noBottomMargin}>
                 <Select placeholder="to">
+                  <Select.Option value=""></Select.Option>
                   <Select.Option value="demo">Demo</Select.Option>
                 </Select>
               </Form.Item>
@@ -144,6 +150,7 @@ const FilteringForm = () => {
             <Space.Compact>
               <Form.Item className={styles.flexGrow}>
                 <Select placeholder="from">
+                  <Select.Option value=""></Select.Option>
                   <Select.Option value="demo1">2.8l</Select.Option>
                   <Select.Option value="demo2">3.0l</Select.Option>
                   <Select.Option value="demo3">3.2l</Select.Option>
@@ -151,6 +158,7 @@ const FilteringForm = () => {
               </Form.Item>
               <Form.Item className={styles.flexGrow}>
                 <Select placeholder="to">
+                  <Select.Option value=""></Select.Option>
                   <Select.Option value="demo1">2.8l</Select.Option>
                   <Select.Option value="demo2">3.0l</Select.Option>
                   <Select.Option value="demo3">3.2l</Select.Option>
@@ -171,6 +179,7 @@ const FilteringForm = () => {
                 style={{ ...sx.rightMargin, ...sx.noBottomMargin }}
               >
                 <Select placeholder="Steering wheel">
+                  <Select.Option value=""></Select.Option>
                   <Select.Option value="demo1">Left</Select.Option>
                   <Select.Option value="demo2">Right</Select.Option>
                 </Select>
@@ -180,6 +189,7 @@ const FilteringForm = () => {
                 style={sx.noBottomMargin}
               >
                 <Select placeholder="Transmission">
+                  <Select.Option value=""></Select.Option>
                   <Select.Option value="demo1">Yes</Select.Option>
                   <Select.Option value="demo2">No</Select.Option>
                 </Select>
