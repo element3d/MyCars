@@ -1,0 +1,33 @@
+.container {
+  width: 1300px;
+  height: 100vh;
+  display: flex;
+  margin: 0 auto;
+  /* TODO: HEIGHT SHOULD CHANGE LATER */
+}
+
+.sectionLeft {
+}
+
+.sectionRight {
+  width: 30%;
+  background-color: #fff6f6;
+}
+
+.filteringFormWrapper {
+}
+
+/* SCREENS LESS THAN 1199px */
+@media (max-width: 1199px) {
+  .container {
+    display: flex;
+    justify-content: center;
+    width: unset;
+  }
+  .sectionRight {
+    display: none;
+  }
+  .sectionLeft {
+    flex: 0;
+  }
+}

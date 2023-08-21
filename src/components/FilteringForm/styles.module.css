@@ -1,0 +1,49 @@
+.filteringForm {
+  width: 920px;
+  margin-right: var(--big-margin);
+  padding: 15px;
+  -moz-box-shadow: var(--shadow-1);
+  box-shadow: var(--shadow-1);
+  border-radius: var(--border-radius);
+}
+
+.secondRow {
+  display: flex;
+  justify-content: space-between;
+  margin-top: var(--average-margin);
+}
+
+.flexGrow {
+  flex: 1;
+}
+
+.flexColumnsWrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; 
+}
+
+.firstColumn {
+    display: flex;
+    flex-direction: column;
+    margin-right: var(--average-margin);
+    flex-basis: 33.3%;
+}
+
+.secondColumn {
+    display: flex;
+    flex-direction: column;
+    margin-right: var(--average-margin);
+    flex-basis: 33.3%;
+}
+
+.thirdColumn {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 33.3%;
+}
+
+.inlineItems {
+    display: inline-block;
+    width: calc(50% - 5px);
+}
