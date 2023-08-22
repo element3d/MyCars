@@ -7,14 +7,12 @@
 }
 
 .sectionLeft {
+  max-width: 1000px;
 }
 
 .sectionRight {
   width: 30%;
   background-color: #fff6f6;
-}
-
-.filteringFormWrapper {
 }
 
 /* SCREENS LESS THAN 1199px */
@@ -26,8 +24,5 @@
   }
   .sectionRight {
     display: none;
-  }
-  .sectionLeft {
-    flex: 0;
   }
 }

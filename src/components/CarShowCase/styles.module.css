@@ -1,0 +1,32 @@
+.carShowCaseWrapper {
+    display: flex;
+    width: 100%;
+  }
+  
+  .imageWrapper {
+    flex: 70%;
+  }
+  
+  .description {
+    flex: 30%;
+    margin-left: var(--big-margin);
+  }
+
+  .textWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .textRow {
+    display: flex;
+  }
+
+  .secondaryText {
+    font-size: 20px;
+  }
+  
+  .text {
+    font-size: 20px;
+    margin-left: var(--average-margin);
+  }

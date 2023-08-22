@@ -4,30 +4,21 @@ import styles from "./styles.module.css";
 import FilteringForm from "@/components/FilteringForm";
 import SharedCard from '@/components/SharedCard'
 import BreadCrumb from "@/components/BreadCrumb";
+import { image, items } from "./data";
 
-const items = [
-  {
-    title: <a href="/">Home</a>,
-  },
-  {
-    title: <a href="/bmw">BMW</a>,
-  },
-  {
-    title: "Title",
-  },
-];
-
-export default function Home() {
+ function HomePage() {
   return (
-    <main className={styles.container}>
+    <>
       <section className={styles.sectionLeft}>
-        <div className={styles.filteringFormWrapper}>
         <BreadCrumb items={items}/>
+        <div className={styles.filteringFormWrapper}>
           <FilteringForm />
         </div>
-        <SharedCard />
+        <SharedCard image={image} />
       </section>
       <section className={styles.sectionRight}>SECTION RIGHT</section>
-    </main>
+    </>
   );
 }
+
+export default HomePage;

@@ -1,0 +1,27 @@
+.sectionLeft {
+  width: 1000px;
+}
+.sectionRight {
+  width: 30%;
+  background-color: #fff6f6;
+}
+
+.carComments {
+  display: flex;
+  flex-direction: column;
+  margin-top: var(--big-margin);
+}
+
+.carCommentsText {
+    width: 50%;
+    margin-bottom: var(--average-margin);
+}
+
+/* SCREENS LESS THAN 1199px */
+@media (max-width: 1199px) {
+  .sectionRight {
+    display: none;
+  }
+
+}
+

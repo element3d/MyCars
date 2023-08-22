@@ -109,3 +109,8 @@ a {
 /* STYLES FOR ANT-FORM-ITEM GLOBAL */
 /* .ant-form-item {
 } */
+
+/* GLOBAL STYLES FOR CAROUSEL WRAPPER */
+.carousel .thumbs-wrapper {
+  margin: 0 !important;
+}
