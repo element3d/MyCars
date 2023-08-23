@@ -1,0 +1,32 @@
+.recommendedCarWrapper {
+  margin-top: var(--big-margin);
+  width: fit-content;
+}
+
+.carContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.text {
+  line-height: 1;
+}
+
+.image {
+  border-radius: var(--border-radius);
+  margin-bottom: var(--small-margin);
+  object-fit: cover;
+  position: relative;
+}
+
+.image:hover {
+  opacity: 0.8;
+}
+
+.text:not(:last-child) {
+    margin-bottom: 3px;
+}
+
+.hovered {
+  color: rgb(240, 35, 35);
+}

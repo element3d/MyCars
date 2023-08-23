@@ -49,6 +49,7 @@
 
   --big-margin: 20px;
   --average-margin: 10px;
+  --small-margin: 5px;
 }
 
 @media (prefers-color-scheme: dark) {

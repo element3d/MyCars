@@ -6,6 +6,16 @@
   background-color: #fff6f6;
 }
 
+.recommendedCarsTitle {
+  margin-bottom: 0 !important;
+}
+
+.recommendedCarContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--big-margin);
+}
+
 .carComments {
   display: flex;
   flex-direction: column;

@@ -1,9 +1,11 @@
 .container {
   width: 1300px;
-  height: 100vh;
+  /* height: 100vh; */
   display: flex;
   margin: 0 auto;
   /* TODO: HEIGHT SHOULD CHANGE LATER */
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 .sectionLeft {
