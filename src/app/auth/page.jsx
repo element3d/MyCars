@@ -7,6 +7,7 @@ import { AUTH_METHOD } from "@/components/dependencies/constants";
 import Register from "@/components/auth/register";
 import { items, text1, text2, text3 } from "./data";
 import styles from "./styles.module.css";
+import Login from "@/components/auth/login";
 
 const UserAuthPage = () => {
   const [authMethod, setAuthMethod] = useState(AUTH_METHOD.LOGIN);
@@ -37,11 +38,7 @@ const UserAuthPage = () => {
               Registration
             </Radio.Button>
           </Radio.Group>
-          {authMethod === AUTH_METHOD.REGISTRATION ? (
-            <Register />
-          ) : (
-            <>{/* TODO: LOGIN PAGE HERE  */}</>
-          )}
+          {authMethod === AUTH_METHOD.REGISTRATION ? <Register /> : <Login />}
         </div>
         <p className={styles.paragraph}>
           {text1}{" "}

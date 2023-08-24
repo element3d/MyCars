@@ -1,0 +1,18 @@
+.formItem {
+  margin-bottom: var(--average-margin);
+}
+
+.formItem:first-child {
+  margin-top: var(--big-margin);
+}
+
+.submitButton {
+  margin-top: var(--big-margin);
+}
+
+.otherMethodsContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
