@@ -33,7 +33,9 @@ const TopBar = () => {
           <PlusCircleOutlined className={styles.plusIcon} />
           Sell
         </div>
-        <div className={styles.authButton}>Login</div>
+        <div className={styles.authButton}>
+          <Link href="/auth">Login / Registration</Link>
+        </div>
       </div>
     </div>
   );

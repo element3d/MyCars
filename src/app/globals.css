@@ -50,6 +50,9 @@
   --big-margin: 20px;
   --average-margin: 10px;
   --small-margin: 5px;
+
+  /* COLORS */
+  --primary-color: '#1677ff'
 }
 
 @media (prefers-color-scheme: dark) {

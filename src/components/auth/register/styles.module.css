@@ -1,0 +1,11 @@
+.formItem {
+  margin-bottom: var(--average-margin);
+}
+
+.formItem:first-child {
+  margin-top: var(--big-margin);
+}
+
+.submitButton {
+  margin-top: var(--big-margin);
+}

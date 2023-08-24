@@ -50,3 +50,11 @@
 .newAd {
   margin-right: 5px;
 }
+
+.authButton {
+  margin-left: var(--big-margin);
+}
+
+.authButton:hover {
+  color: var(--primary-color);
+}
