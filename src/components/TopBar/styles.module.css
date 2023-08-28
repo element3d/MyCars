@@ -49,6 +49,16 @@
 
 .newAd {
   margin-right: 5px;
+  display: flex;
+  align-items: center;
+  background-color: #1677ff;
+  padding: 10px;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+}
+
+.newAd:hover {
+  transform: scale(1.05);
 }
 
 .authButton {
@@ -57,4 +67,13 @@
 
 .authButton:hover {
   color: var(--primary-color);
+}
+
+.plusIcon {
+  margin-right: var(--average-margin);
+}
+
+.plusIcon svg {
+  width: 20px;
+  height: 20px;
 }

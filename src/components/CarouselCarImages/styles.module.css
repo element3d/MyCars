@@ -1,40 +1,41 @@
 .arrowLeft {
-    top: 50%;
-    left: 12px;
-    transform: translateY(-50%);
-    position: absolute;
-    z-index: 1;
-    cursor: pointer;
+  top: 50%;
+  left: 12px;
+  transform: translateY(-50%);
+  position: absolute;
+  z-index: 1;
+  cursor: pointer;
 }
 
 .arrowRight {
-    top: 50%;
-    right: 12px;
-    transform: translateY(-50%);
-    position: absolute;
-    z-index: 1;
-    cursor: pointer;
-    
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  position: absolute;
+  z-index: 1;
+  cursor: pointer;
 }
 
-.arrowLeft svg, .arrowRight  svg {
-    width: 36px;
-    height: 36px;
-    fill: white;
+.arrowLeft svg,
+.arrowRight svg {
+  width: 36px;
+  height: 36px;
+  fill: white;
 }
 
-.arrowLeft svg:hover, .arrowRight  svg:hover {
-   transform: scale(1.2);
-   fill: #000;
+.arrowLeft svg:hover,
+.arrowRight svg:hover {
+  transform: scale(1.2);
+  fill: #000;
 }
 
 .showArrow {
-    display: block;
+  display: block;
 }
 .hiddenArrow {
-    display: none;
+  display: none;
 }
 
 .carouselCarImage {
-    cursor: zoom-in;
+  cursor: zoom-in;
 }

@@ -1,0 +1,22 @@
+.container {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.centerContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: var(--big-margin);
+  width: 100vw;
+  height: 100vh;
+}
+
+.contentBox {
+  width: 350px;
+  padding: 20px;
+  box-shadow: var(--shadow-1);
+  border-radius: var(--border-radius);
+  box-sizing: border-box;
+  text-align: center;
+}

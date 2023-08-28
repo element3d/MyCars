@@ -1,0 +1,42 @@
+.container {
+  padding: 15px;
+  box-shadow: var(--shadow-1);
+  border-radius: var(--border-radius);
+}
+
+.title {
+  cursor: pointer;
+  margin: 0 !important;
+}
+
+.carListContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  padding: 15px;
+}
+
+.carListContainer p {
+  flex: 0 0 calc(33.33% - 10px);
+  cursor: pointer;
+}
+
+.carListContainer p:hover {
+  color: var(--hover-red);
+}
+
+.input {
+  padding: 12px;
+  font-size: 18px;
+}
+
+.closeButton {
+  position: absolute;
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+  color: #000;
+  font-size: 22px;
+  top: 0;
+  right: 0;
+}

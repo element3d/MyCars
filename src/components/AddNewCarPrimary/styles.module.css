@@ -1,0 +1,9 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--border-radius);
+  width: 500px;
+  padding: 15px;
+  gap: 10px;
+  margin-top: var(--big-margin);
+}

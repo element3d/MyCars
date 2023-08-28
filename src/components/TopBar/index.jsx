@@ -3,9 +3,10 @@ import React, { useState } from "react";
 import styles from "./styles.module.css";
 import Link from "next/link";
 import Image from "next/image";
-import Logo from "../../../public/images/icons-car-48.png";
 import { Input } from "antd";
 import { PlusCircleOutlined } from "@ant-design/icons";
+
+import Logo from "../../../public/images/icons-car-48.png";
 
 const TopBar = () => {
   const [loading] = useState(false);
@@ -29,10 +30,10 @@ const TopBar = () => {
         </div>
       </div>
       <div className={styles.rightContainer}>
-        <div className={styles.newAd}>
+        <Link href="/add" className={styles.newAd}>
           <PlusCircleOutlined className={styles.plusIcon} />
           Sell
-        </div>
+        </Link>
         <div className={styles.authButton}>
           <Link href="/auth">Login / Registration</Link>
         </div>

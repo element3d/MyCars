@@ -24,7 +24,7 @@
 }
 
 .text:not(:last-child) {
-    margin-bottom: 3px;
+  margin-bottom: 3px;
 }
 
 .hovered {

@@ -23,8 +23,8 @@
 }
 
 .carCommentsText {
-    width: 50%;
-    margin-bottom: var(--average-margin);
+  width: 50%;
+  margin-bottom: var(--average-margin);
 }
 
 /* SCREENS LESS THAN 1199px */
@@ -32,6 +32,4 @@
   .sectionRight {
     display: none;
   }
-
 }
-
