@@ -13,10 +13,14 @@
 }
 
 .contentBox {
-  width: 350px;
-  padding: 20px;
-  box-shadow: var(--shadow-1);
-  border-radius: var(--border-radius);
-  box-sizing: border-box;
-  text-align: center;
+  width: 500px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.contentBoxH2 {
+  align-self: center;
+  transform: translateX(-6px);
+  margin-top: 5px;
 }

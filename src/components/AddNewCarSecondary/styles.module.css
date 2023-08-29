@@ -1,9 +1,7 @@
 .container {
   display: flex;
   flex-direction: column;
-  /* box-shadow: var(--shadow-1); */
   border-radius: var(--border-radius);
-  width: 500px;
   padding: 15px;
   gap: 10px;
 }
@@ -12,7 +10,6 @@
 }
 
 .flexContainer {
-  /* width: 100%; */
   height: auto;
   display: flex;
   gap: 20px;

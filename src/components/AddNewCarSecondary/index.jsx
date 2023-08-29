@@ -18,20 +18,17 @@ import ColorPicker from "../ColorPicker";
 
 const { Title } = Typography;
 
-const AddNewCarSecondary = () => {
+const AddNewCarSecondary = ({ setSelectInputValue, selectInputValue }) => {
   const [open, setOpen] = useState();
-  const [selectedValue, setSelectedValue] = useState({
-    year: "",
-    body: "",
-    engine: "",
-    driveConfiguration: "",
-    transmission: "",
-    color: "",
-  });
 
-  const getSelectedValue = useCallback((element, type, itemKey) => {
-    setSelectedValue((prevState) => ({ ...prevState, [type]: element })),
+  const getSelectInputValue = useCallback((element, type, itemKey) => {
+    setSelectInputValue((prevState) => ({ ...prevState, [type]: element })),
       setOpen((prev) => prev?.filter((key) => key !== itemKey));
+  }, []);
+
+  const handleInputChange = useCallback((e) => {
+    const value = e.target.value;
+    setSelectInputValue((prev) => ({ ...prev, milage: value }));
   }, []);
 
   const items = [
@@ -41,13 +38,13 @@ const AddNewCarSecondary = () => {
       children: (
         <div className={styles.flexContainer}>
           {generateYearArrayFrom(2000).map((el) => (
-            <p key={el} onClick={() => getSelectedValue(el, "year", "1")}>
+            <p key={el} onClick={() => getSelectInputValue(el, "year", "1")}>
               {el}
             </p>
           ))}
         </div>
       ),
-      extra: <div>{selectedValue.year}</div>,
+      extra: <div>{selectInputValue.year}</div>,
     },
     {
       key: "2",
@@ -55,13 +52,16 @@ const AddNewCarSecondary = () => {
       children: (
         <div className={styles.flexContainer}>
           {CarBodyTypes.map((body) => (
-            <p key={body} onClick={() => getSelectedValue(body, "body", "2")}>
+            <p
+              key={body}
+              onClick={() => getSelectInputValue(body, "body", "2")}
+            >
               {body}
             </p>
           ))}
         </div>
       ),
-      extra: <div>{selectedValue.body}</div>,
+      extra: <div>{selectInputValue.body}</div>,
     },
     {
       key: "3",
@@ -71,14 +71,14 @@ const AddNewCarSecondary = () => {
           {EngineTypes.map((engine) => (
             <p
               key={engine}
-              onClick={() => getSelectedValue(engine, "engine", "3")}
+              onClick={() => getSelectInputValue(engine, "engine", "3")}
             >
               {engine}
             </p>
           ))}
         </div>
       ),
-      extra: <div>{selectedValue.engine}</div>,
+      extra: <div>{selectInputValue.engine}</div>,
     },
     {
       key: "4",
@@ -89,7 +89,11 @@ const AddNewCarSecondary = () => {
             <p
               key={driveConfiguration}
               onClick={() =>
-                getSelectedValue(driveConfiguration, "driveConfiguration", "4")
+                getSelectInputValue(
+                  driveConfiguration,
+                  "driveConfiguration",
+                  "4"
+                )
               }
             >
               {driveConfiguration}
@@ -97,7 +101,7 @@ const AddNewCarSecondary = () => {
           ))}
         </div>
       ),
-      extra: <div>{selectedValue.driveConfiguration}</div>,
+      extra: <div>{selectInputValue.driveConfiguration}</div>,
     },
     {
       key: "5",
@@ -108,7 +112,7 @@ const AddNewCarSecondary = () => {
             <p
               key={transmission}
               onClick={() =>
-                getSelectedValue(transmission, "transmission", "5")
+                getSelectInputValue(transmission, "transmission", "5")
               }
             >
               {transmission}
@@ -116,7 +120,7 @@ const AddNewCarSecondary = () => {
           ))}
         </div>
       ),
-      extra: <div>{selectedValue.transmission}</div>,
+      extra: <div>{selectInputValue.transmission}</div>,
     },
     {
       key: "6",
@@ -127,7 +131,7 @@ const AddNewCarSecondary = () => {
             return (
               <p
                 key={color}
-                onClick={() => getSelectedValue(color, "color", "6")}
+                onClick={() => getSelectInputValue(color, "color", "6")}
               >
                 <ColorPicker pickedColor={color} />
               </p>
@@ -135,7 +139,9 @@ const AddNewCarSecondary = () => {
           })}
         </div>
       ),
-      extra: <div>{getColorsKeyByValue(selectedValue.color, COLOR_TYPES)}</div>,
+      extra: (
+        <div>{getColorsKeyByValue(selectInputValue.color, COLOR_TYPES)}</div>
+      ),
     },
   ];
   return (
@@ -150,10 +156,10 @@ const AddNewCarSecondary = () => {
         onChange={(e) => setOpen(e)}
       />
       <div className={styles.input}>
-      <Title level={3} className={styles.title}>
-            Milage
-          </Title>
-        <Input defaultValue="26888888" size="large"/>
+        <Title level={3} className={styles.title}>
+          Milage
+        </Title>
+        <Input size="large" onChange={handleInputChange} />
       </div>
     </div>
   );
