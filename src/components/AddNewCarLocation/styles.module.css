@@ -1,0 +1,13 @@
+.container {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--border-radius);
+  gap: 10px;
+}
+
+.locationContainer {
+  padding: 15px;
+  box-shadow: var(--shadow-1);
+  border-radius: var(--border-radius);
+}

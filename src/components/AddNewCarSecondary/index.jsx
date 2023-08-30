@@ -159,7 +159,7 @@ const AddNewCarSecondary = ({ setSelectInputValue, selectInputValue }) => {
         <Title level={3} className={styles.title}>
           Milage
         </Title>
-        <Input size="large" onChange={handleInputChange} />
+        <Input size="large" type="number" onChange={handleInputChange} />
       </div>
     </div>
   );
