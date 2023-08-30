@@ -29,7 +29,7 @@ const AddNewCarPhoto = ({ handleGetUploadImages }) => {
 
   const uploadImage = async (options) => {
     handleGetUploadImages(fileList, options);
-    //TODO: BELOW SHOULD GO TO PARENT COMPONENT HANDLE UPLOAD FUNCTION
+    //TODO: BELOW SHOULD GO TO PARENT COMPONENT. HANDLE UPLOAD FUNCTION
     const { onSuccess, onError, file, onProgress } = options;
 
     const fmData = new FormData();
