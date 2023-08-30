@@ -19,7 +19,6 @@ const beforeUpload = (file) => {
 
 const AddNewCarPhoto = ({ handleGetUploadImages }) => {
   const [loading, setLoading] = useState(false);
-  const [imageUrl, setImageUrl] = useState();
 
   const [fileList, setFileList] = useState([]);
 
@@ -27,19 +26,22 @@ const AddNewCarPhoto = ({ handleGetUploadImages }) => {
     setFileList(newFileList);
   };
 
+
   const uploadImage = async (options) => {
     handleGetUploadImages(fileList, options);
     //TODO: BELOW SHOULD GO TO PARENT COMPONENT. HANDLE UPLOAD FUNCTION
     const { onSuccess, onError, file, onProgress } = options;
-
+    setLoading(true)
     const fmData = new FormData();
     const config = {
       headers: { "content-type": "multipart/form-data" },
       onUploadProgress: (event) => {
         const percent = Math.floor((event.loaded / event.total) * 100);
+        console.log(percent)
         onProgress({ percent: (event.loaded / event.total) * 100 });
       },
     };
+    console.log(config)
     fmData.append("image", file);
     try {
       //   const res = await axios.post(
@@ -49,11 +51,13 @@ const AddNewCarPhoto = ({ handleGetUploadImages }) => {
       //   );
 
       onSuccess("Ok");
+      setLoading(false)
       //   console.log("server res: ", res);
     } catch (err) {
       console.log("Eroor: ", err);
       //   const error = new Error("Some error");
       onError({ err });
+      setLoading(false)
     }
   };
 
