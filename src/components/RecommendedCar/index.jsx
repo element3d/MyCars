@@ -11,7 +11,7 @@ const { Text } = Typography;
 
 const RecommendedCar = ({ car }) => {
   const [isMouseOver, setIsMouseOver] = useState(false);
-  const { id, imageSrc, carBrand, year, milage, price } = car || {};
+  const { id, imageSrc, carBrand, year, mileage, price } = car || {};
 
   const handleMouseOver = useCallback(() => setIsMouseOver(true), []);
 
@@ -35,7 +35,7 @@ const RecommendedCar = ({ car }) => {
           {carBrand}
         </Text>
         <Text className={clsx(styles.text, isMouseOver && styles.hovered)}>
-          {year} / {milage} km
+          {year} / {mileage} km
         </Text>
         <Text strong className={styles.text}>
           ${price}

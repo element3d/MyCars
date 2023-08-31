@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from "react";
+import React, { useCallback, useEffect, useRef } from "react";
 import { Input, Select, Space, Checkbox, Typography } from "antd";
 import { DollarOutlined } from "@ant-design/icons";
 
@@ -14,9 +14,16 @@ const AddNewCarPriceDescription = ({
   setSelectInputValue,
   selectInputValue,
 }) => {
+  const ref = useRef(null)
   useEffect(() => {
     setSelectInputValue((prev) => ({ ...prev, currency: "dollar" }));
   }, []);
+
+  useEffect(() => {
+    if (selectInputValue.city && ref.current) {
+      ref.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [selectInputValue.city]);
 
   const handleChange = useCallback((e) => {
     const { name, value, checked } = e.target;
@@ -66,7 +73,7 @@ const AddNewCarPriceDescription = ({
           Exchange is available
         </Checkbox>
       </div>
-      <div className={styles.priceDescriptionBox}>
+      <div className={styles.priceDescriptionBox} ref={ref}>
         <Typography.Title placeholder="Input city" level={3}>
           Your Comments
         </Typography.Title>

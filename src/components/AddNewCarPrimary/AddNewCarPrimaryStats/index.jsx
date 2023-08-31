@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Modal from "react-modal";
 
 import styles from "./styles.module.css";
@@ -6,6 +6,7 @@ import { Input, Typography } from "antd";
 import { CloseOutlined } from "@ant-design/icons";
 
 const { Title } = Typography;
+
 
 const customStyles = {
   content: {
@@ -34,6 +35,8 @@ const AddNewCarPrimaryStats = ({
 }) => {
   const [modalIsOpen, setIsOpen] = useState(false);
   const [searchValue, setSearchValue] = useState(null);
+  const [modalIsMounted, setModalIsMounted] = useState(false);
+  let inputRef = useRef(null)
 
   const closeModal = useCallback(() => {
     setIsOpen(false);
@@ -64,6 +67,14 @@ const AddNewCarPrimaryStats = ({
     });
   }, [searchValue]);
 
+  useEffect(() => {
+    if(modalIsMounted && inputRef.current) {
+      inputRef.current.focus({
+        cursor: 'end',
+      });
+    }
+  }, [modalIsMounted])
+
   return (
     <div className={styles.container}>
       {selectInputValue[type] ? (
@@ -88,6 +99,10 @@ const AddNewCarPrimaryStats = ({
       >
         <form>
           <Input
+            ref={(_ref) => {
+              setModalIsMounted(true)
+              return (inputRef.current = _ref)
+            }}
             value={searchValue}
             placeholder={title}
             className={styles.input}

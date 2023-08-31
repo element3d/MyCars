@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { message, Upload } from "antd";
 import { LoadingOutlined, PlusOutlined } from "@ant-design/icons";
 import Title from "antd/es/typography/Title";
@@ -17,7 +17,8 @@ const beforeUpload = (file) => {
   return isJpgOrPng && isLt2M;
 };
 
-const AddNewCarPhoto = ({ handleGetUploadImages }) => {
+const AddNewCarPhoto = ({ handleGetUploadImages, selectInputValue }) => {
+  const addPhotoRef = useRef(null);
   const [loading, setLoading] = useState(false);
 
   const [fileList, setFileList] = useState([]);
@@ -83,9 +84,15 @@ const AddNewCarPhoto = ({ handleGetUploadImages }) => {
     </div>
   );
 
+  useEffect(() => {
+    if (selectInputValue.year && addPhotoRef.current) {
+      addPhotoRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [selectInputValue.year]);
+
   return (
     <div className={styles.container}>
-      <div className={styles.photoContainer}>
+      <div className={styles.photoContainer} ref={addPhotoRef}>
         <Title level={2}>Upload photo</Title>
         <Upload
           accept="image/*"

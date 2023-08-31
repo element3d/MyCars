@@ -1,5 +1,6 @@
 import React, { useCallback, useState } from "react";
 import { Collapse, Typography, Input } from "antd";
+import _debounce from 'lodash/debounce';
 
 import styles from "./styles.module.css";
 import {
@@ -26,10 +27,18 @@ const AddNewCarSecondary = ({ setSelectInputValue, selectInputValue }) => {
       setOpen((prev) => prev?.filter((key) => key !== itemKey));
   }, []);
 
-  const handleInputChange = useCallback((e) => {
+  const debouncedHandleInputChange = useCallback(
+    _debounce((value) => {
+      setSelectInputValue((prev) => ({ ...prev, mileage: value }));
+    }, 500),
+    []
+  );
+
+  const handleInputChange = (e) => {
     const value = e.target.value;
-    setSelectInputValue((prev) => ({ ...prev, milage: value }));
-  }, []);
+    debouncedHandleInputChange(value);
+  };
+
 
   const items = [
     {

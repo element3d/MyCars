@@ -1,11 +1,10 @@
 "use client";
-import React, { useState } from "react";
-import { Typography } from "antd";
+import React, { useCallback, useEffect, useRef, useState } from "react";
+import { Typography, Button, Form } from "antd";
 
 import AddNewCarPrimary from "@/components/AddNewCarPrimary";
 import AddNewCarSecondary from "@/components/AddNewCarSecondary";
 import AddNewCarPhoto from "@/components/AddNewCarPhoto";
-import { Button, Form } from "antd";
 import AddNewCarLocation from "@/components/AddNewCarLocation";
 import AddNewCarPriceDescription from "@/components/AddNewCarPriceDescription";
 import styles from "./styles.module.css";
@@ -13,6 +12,7 @@ import styles from "./styles.module.css";
 const { Text } = Typography;
 
 const AddNewPostPage = () => {
+  const submitButtonRef = useRef(null);
   const [selectInputValue, setSelectInputValue] = useState({
     brand: "",
     series: "",
@@ -30,15 +30,21 @@ const AddNewPostPage = () => {
   const [fileList, setFileList] = useState([]);
   console.log("fileList", fileList);
 
-  const onFinish = (values) => {
+  const onFinish = useCallback((values) => {
     console.log("values", values);
     // TODO: upload photos to api
-  };
+  }, []);
 
-  const getUploadData = (data, options) => {
+  const getUploadData = useCallback((data, options) => {
     setFileList(data);
     console.log("options", options);
-  };
+  }, []);
+
+  useEffect(() => {
+    if (selectInputValue.price && submitButtonRef.current) {
+      submitButtonRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [selectInputValue.price]);
 
   return (
     <div className={styles.container}>
@@ -51,17 +57,22 @@ const AddNewPostPage = () => {
             setSelectInputValue={setSelectInputValue}
             selectInputValue={selectInputValue}
           />
+
           {selectInputValue.model && (
             <AddNewCarSecondary
               setSelectInputValue={setSelectInputValue}
               selectInputValue={selectInputValue}
             />
           )}
+
           {selectInputValue.year && (
-            <AddNewCarPhoto handleGetUploadImages={getUploadData} />
+            <AddNewCarPhoto
+              handleGetUploadImages={getUploadData}
+              selectInputValue={selectInputValue}
+            />
           )}
 
-          {selectInputValue.milage && (
+          {selectInputValue.mileage && (
             <AddNewCarLocation
               setSelectInputValue={setSelectInputValue}
               selectInputValue={selectInputValue}
@@ -76,11 +87,13 @@ const AddNewPostPage = () => {
           )}
 
           {selectInputValue.price && (
-            <Form.Item wrapperCol={{ offset: 9 }}>
-              <Button type="primary" htmlType="submit">
-                Add New Post
-              </Button>
-            </Form.Item>
+            <div ref={submitButtonRef}>
+              <Form.Item wrapperCol={{ offset: 9 }}>
+                <Button type="primary" htmlType="submit">
+                  Add New Post
+                </Button>
+              </Form.Item>
+            </div>
           )}
         </Form>
       </div>

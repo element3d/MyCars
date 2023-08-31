@@ -27,7 +27,7 @@ export const carsList = [
     imageSrc: "/images/recommendedCar.jpg",
     carBrand: "BMW X5",
     year: "2017",
-    milage: "51,000",
+    mileage: "51,000",
     price: "36,000",
   },
   {
@@ -35,7 +35,7 @@ export const carsList = [
     imageSrc: "/images/recommendedCar.jpg",
     carBrand: "BMW X5",
     year: "2017",
-    milage: "51,000",
+    mileage: "51,000",
     price: "36,000",
   },
   {
@@ -43,7 +43,7 @@ export const carsList = [
     imageSrc: "/images/recommendedCar.jpg",
     carBrand: "BMW X5",
     year: "2017",
-    milage: "51,000",
+    mileage: "51,000",
     price: "36,000",
   },
   {
@@ -51,7 +51,7 @@ export const carsList = [
     imageSrc: "/images/recommendedCar.jpg",
     carBrand: "BMW X5",
     year: "2017",
-    milage: "51,000",
+    mileage: "51,000",
     price: "36,000",
   },
   {
@@ -59,7 +59,7 @@ export const carsList = [
     imageSrc: "/images/recommendedCar.jpg",
     carBrand: "BMW X5",
     year: "2017",
-    milage: "51,000",
+    mileage: "51,000",
     price: "36,000",
   },
 ];
