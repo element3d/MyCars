@@ -12,7 +12,7 @@ const ImageCard = ({ imageUrls }) => {
     const newIndex = Math.floor(mouseX / imageWidth);
 
     setHoveredImageIndex(newIndex);
-  }, []);
+  }, [imageUrls.length]);
 
   const handleMouseOut = useCallback(() => setHoveredImageIndex(0), []);
 
@@ -23,7 +23,7 @@ const ImageCard = ({ imageUrls }) => {
       onMouseOut={handleMouseOut}
     >
       <Image
-        src={imageUrls[hoveredImageIndex]}
+        src={`${process.env.NEXT_PUBLIC_IMAGE_BASE_URI}/${imageUrls[hoveredImageIndex].uri}`}
         alt="Car"
         width={250}
         height={250}

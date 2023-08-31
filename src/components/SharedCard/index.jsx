@@ -7,14 +7,14 @@ import Link from "next/link";
 
 const { Title } = Typography;
 
-const SharedCard = ({ image }) => {
+const SharedCard = ({ images, id }) => {
   return (
     <Link
       target="_blank"
-      href={`/cars/${image.id}`}
+      href={`/cars/${id}`}
       className={styles.sharedCardWrapper}
     >
-      <ImageCard imageUrls={image.collection} />
+      <ImageCard imageUrls={images} />
       <Title level={3} className={styles.title}>
         Some Awesome Car
       </Title>

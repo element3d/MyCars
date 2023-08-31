@@ -3,6 +3,9 @@ import React from "react";
 import { DatePicker, Form, Input, Radio, Select, Space } from "antd";
 import { Collapse } from "antd";
 import styles from "./styles.module.css";
+import { useQuery } from "@tanstack/react-query";
+import axiosInstance from "../../../axiosInstance";
+import { GET_ALL_CARS } from "@/queries/get";
 
 const sx = {
   rightMargin: {
@@ -28,6 +31,11 @@ const items = [
 ];
 
 const FilteringForm = () => {
+  const { data: { data: allCars } = {} } = useQuery({
+    queryKey: ["cars-filtering-form"],
+    queryFn: () => axiosInstance.get(GET_ALL_CARS),
+  });
+
   const onChange = (key) => {
     console.log(key);
   };
@@ -45,22 +53,36 @@ const FilteringForm = () => {
         <div className={styles.secondRow}>
           <Form.Item className={styles.flexGrow} style={sx.rightMargin}>
             <Select placeholder="Brand">
-              <Select.Option value="demo">Demo</Select.Option>
+              {allCars?.cars.map((car) => (
+                <Select.Option key={car.id} value={car.make}>
+                  {car.make}
+                </Select.Option>
+              ))}
             </Select>
           </Form.Item>
           <Form.Item className={styles.flexGrow} style={sx.rightMargin}>
             <Select placeholder="Series">
-              <Select.Option value="demo">Demo</Select.Option>
+              <Select.Option value=""></Select.Option>
+              {allCars?.cars.map((car) => (
+                <Select.Option key={car.id} value={car.class}>
+                  {car.class}
+                </Select.Option>
+              ))}
             </Select>
           </Form.Item>
           <Form.Item className={styles.flexGrow} style={sx.rightMargin}>
             <Select placeholder="Generation">
+              <Select.Option value=""></Select.Option>
               <Select.Option value="demo">Demo</Select.Option>
             </Select>
           </Form.Item>
           <Form.Item className={styles.flexGrow}>
             <Select placeholder="Model">
-              <Select.Option value="demo">Demo</Select.Option>
+              {allCars?.cars.map((car) => (
+                <Select.Option key={car.id} value={car.model}>
+                  {car.model}
+                </Select.Option>
+              ))}
             </Select>
           </Form.Item>
         </div>
@@ -69,12 +91,22 @@ const FilteringForm = () => {
             <Form.Item style={sx.noBottomMargin}>
               <Form.Item className={styles.inlineItems} style={sx.rightMargin}>
                 <Select placeholder="Body">
-                  <Select.Option value="demo">Demo</Select.Option>
+                  <Select.Option value=""></Select.Option>
+                  {allCars?.cars.map((car) => (
+                    <Select.Option key={car.id} value={car.body_type}>
+                      {car.body_type}
+                    </Select.Option>
+                  ))}
                 </Select>
               </Form.Item>
               <Form.Item className={styles.inlineItems}>
                 <Select placeholder="Transmission">
-                  <Select.Option value="demo">Demo</Select.Option>
+                  <Select.Option value=""></Select.Option>
+                  {allCars?.cars.map((car) => (
+                    <Select.Option key={car.id} value={car.transmission}>
+                      {car.transmission}
+                    </Select.Option>
+                  ))}
                 </Select>
               </Form.Item>
             </Form.Item>
@@ -102,17 +134,21 @@ const FilteringForm = () => {
               <Form.Item className={styles.inlineItems} style={sx.rightMargin}>
                 <Select placeholder="Engine">
                   <Select.Option value=""></Select.Option>
-                  <Select.Option value="deno1">Patrol</Select.Option>
-                  <Select.Option value="deno2">Diesel</Select.Option>
-                  <Select.Option value="deno3">Hybrid</Select.Option>
+                  {allCars?.cars.map((car) => (
+                    <Select.Option key={car.id} value={car.engine_type}>
+                      {car.engine_type}
+                    </Select.Option>
+                  ))}
                 </Select>
               </Form.Item>
               <Form.Item className={styles.inlineItems}>
                 <Select placeholder="Drive Configuration Selector">
                   <Select.Option value=""></Select.Option>
-                  <Select.Option value="demo1">Front-wheel drive</Select.Option>
-                  <Select.Option value="demo2">Back-wheel-drive</Select.Option>
-                  <Select.Option value="demo3">Full-wheel-drive</Select.Option>
+                  {allCars?.cars.map((car) => (
+                    <Select.Option key={car.id} value={car.drive_type}>
+                      {car.drive_type}
+                    </Select.Option>
+                  ))}
                 </Select>
               </Form.Item>
             </Form.Item>
