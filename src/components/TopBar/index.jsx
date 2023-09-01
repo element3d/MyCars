@@ -14,7 +14,7 @@ const TopBar = () => {
   return (
     <div className={styles.container}>
       <div className={styles.leftContainer}>
-        <Link href="/" className={styles.linkWrapper}>
+        <Link href="/cars" className={styles.linkWrapper}>
           <div className={styles.logo}>
             <Image src={Logo} alt="Logo Image" />
           </div>

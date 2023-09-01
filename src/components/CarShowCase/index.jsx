@@ -4,6 +4,7 @@ import styles from "./styles.module.css";
 import CarouselCarImages from "../CarouselCarImages";
 import Title from "antd/es/typography/Title";
 import Text from "antd/es/typography/Text";
+import { EDriveType } from "../../../Enums";
 
 const CarShowCase = ({ car }) => {
   return (
@@ -38,7 +39,7 @@ const CarShowCase = ({ car }) => {
             <Text type="secondary" className={styles.secondaryText}>
               Drive Config:
             </Text>
-            <Text className={styles.text}>{car?.drive_type}</Text>
+            <Text className={styles.text}>{ EDriveType.toString(car?.drive_type)}</Text>
           </div>
           <div className={styles.textRow}>
             <Text type="secondary" className={styles.secondaryText}>
