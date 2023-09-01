@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React, { useCallback, useState } from "react";
 import Image from "next/image";
 import styles from "./styles.module.css";
@@ -43,21 +44,25 @@ const ModalCarView = ({ isOpen, handleClose, src, imageUrls }) => {
       style={customStyles}
       contentLabel="Image Modal"
     >
-      <img src={currentImage} alt="Current Image" className={styles.blur} />
+      <img src={src} alt="Current Image" className={styles.blur} />
       <div className={styles.leftPanel}>
-        {imageUrls.map((image) => (
-          <Image
-            fill
-            className={clsx(
-              styles.leftPanelImage,
-              image.url === currentImage && styles.selectedImage
-            )}
-            src={image.url}
-            alt="Left panel image"
-            key={image.id}
-            onClick={() => handleLeftPanelImageClick(image.url)}
-          />
-        ))}
+        {imageUrls.map((image) => {
+          const imageSrcUri = `${process.env.NEXT_PUBLIC_IMAGE_BASE_URI}/${image.uri}`;
+
+          return (
+            <Image
+              fill
+              className={clsx(
+                styles.leftPanelImage,
+                imageSrcUri === currentImage && styles.selectedImage
+              )}
+              src={imageSrcUri}
+              alt="Left panel image"
+              key={image.id}
+              onClick={() => handleLeftPanelImageClick(imageSrcUri)}
+            />
+          );
+        })}
       </div>
       <div className={styles.zoomImageDiv}>
         <Image

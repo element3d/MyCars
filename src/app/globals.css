@@ -112,6 +112,9 @@ a {
 } */
 
 /* GLOBAL STYLES FOR CAROUSEL WRAPPER */
-.carousel .thumbs-wrapper {
-  margin: 0 !important;
-}
+/* .carousel .thumbs-wrapper {
+  margin-top: 10px !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  margin-bottom: 0 !important;
+} */

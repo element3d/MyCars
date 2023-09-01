@@ -5,80 +5,64 @@ import CarouselCarImages from "../CarouselCarImages";
 import Title from "antd/es/typography/Title";
 import Text from "antd/es/typography/Text";
 
-const imageUrls = [
-  {
-    title: "Image 1",
-    url: "/images/car-image-1.jpg",
-    id: 1,
-  },
-  {
-    title: "Image 2",
-    url: "/images/car-image-2.jpg",
-    id: 2,
-  },
-  {
-    title: "Image 3",
-    url: "/images/car-image-3.jpg",
-    id: 3,
-  },
-];
-
-const CarShowCase = () => {
+const CarShowCase = ({ car }) => {
   return (
     <div className={styles.carShowCaseWrapper}>
       <div className={styles.imageWrapper}>
-        <CarouselCarImages imageUrls={imageUrls} clickable />
+        <CarouselCarImages imageUrls={car?.images} clickable />
       </div>
       <div className={styles.description}>
-        <Title level={3}>$36,000</Title>
+        <Title level={3}>${car?.price}</Title>
         <div className={styles.textWrapper}>
           <div className={styles.textRow}>
             <Text type="secondary" className={styles.secondaryText}>
               Engine:
             </Text>
-            <Text className={styles.text}>Diesel, 3.0l</Text>
+            <Text className={styles.text}>
+              {car?.engine_type}, {car?.engine_size}l
+            </Text>
           </div>
           <div className={styles.textRow}>
             <Text type="secondary" className={styles.secondaryText}>
               Power:
             </Text>
-            <Text className={styles.text}>313 hp</Text>
+            <Text className={styles.text}>{car?.engine_power} hp</Text>
           </div>
           <div className={styles.textRow}>
             <Text type="secondary" className={styles.secondaryText}>
               Transmission:
             </Text>
-            <Text className={styles.text}>Auto</Text>
+            <Text className={styles.text}>{car?.transmission}</Text>
           </div>
           <div className={styles.textRow}>
             <Text type="secondary" className={styles.secondaryText}>
               Drive Config:
             </Text>
-            <Text className={styles.text}>4WD</Text>
+            <Text className={styles.text}>{car?.drive_type}</Text>
           </div>
           <div className={styles.textRow}>
             <Text type="secondary" className={styles.secondaryText}>
               Color:
             </Text>
-            <Text className={styles.text}>Black</Text>
+            <Text className={styles.text}>{car?.color}</Text>
           </div>
           <div className={styles.textRow}>
             <Text type="secondary" className={styles.secondaryText}>
               Milage:
             </Text>
-            <Text className={styles.text}>120,423 км</Text>
+            <Text className={styles.text}>{car?.mileage} км</Text>
           </div>
           <div className={styles.textRow}>
             <Text type="secondary" className={styles.secondaryText}>
               Steering Wheel:
             </Text>
-            <Text className={styles.text}>Left</Text>
+            <Text className={styles.text}>{car?.stearing_wheel}</Text>
           </div>
           <div className={styles.textRow}>
             <Text type="secondary" className={styles.secondaryText}>
               Generation:
             </Text>
-            <Text className={styles.text}>3 generation</Text>
+            <Text className={styles.text}>{car?.model}</Text>
           </div>
         </div>
       </div>
