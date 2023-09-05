@@ -49,7 +49,7 @@ const AddNewCarPrimaryStats = ({
   const handleCarBrandClick = useCallback((item) => {
     setIsOpen(false);
     onSelect(item, type);
-  }, []);
+  }, [onSelect, type]);
 
   const handleInputChange = useCallback((e) => {
     setSearchValue(e.target.value);

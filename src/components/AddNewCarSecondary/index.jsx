@@ -23,13 +23,14 @@ const AddNewCarSecondary = ({ setSelectInputValue, selectInputValue }) => {
       const colorElement = ECarColor.toString(element);
       setSelectInputValue((prevState) => ({
         ...prevState,
-        [type]: colorElement,
+        [type]: type === 'color' ? colorElement : element,
       })),
         setOpen((prev) => prev?.filter((key) => key !== collapseKey));
     },
     [setSelectInputValue]
   );
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const debouncedHandleInputChange = useCallback(
     _debounce((value) => {
       setSelectInputValue((prev) => ({ ...prev, mileage: value }));

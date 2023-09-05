@@ -32,7 +32,7 @@ const AddNewCarPriceDescription = ({
       ...prev,
       [name]: name === "isExchangeAvailable" ? checked : value,
     }));
-  }, []);
+  }, [setSelectInputValue]);
 
   return (
     <div className={styles.container}>
