@@ -34,3 +34,7 @@ export function _getEMakeValues() {
     }),
   ];
 }
+
+export function removeNegativeRepetitiveArr(arr) {
+  return [...new Set(arr)].filter((el) => el >= 0);
+}

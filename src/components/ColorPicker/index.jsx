@@ -3,8 +3,10 @@ import { Tooltip } from "antd";
 
 import styles from "./styles.module.css";
 import { ECarColor } from "../../../enums/Enums";
+import { useTranslation } from "react-i18next"
 
 const ColorPicker = ({ pickedColor }) => {
+  const { t } = useTranslation();
   const color = ECarColor.toColor(pickedColor);
   const colorName = ECarColor.toString(pickedColor)
 
@@ -14,7 +16,7 @@ const ColorPicker = ({ pickedColor }) => {
   };
 
   return (
-    <Tooltip placement="topLeft" title={colorName}>
+    <Tooltip placement="topLeft" title={t(colorName)}>
       <p className={styles.container} style={customStyles} />
     </Tooltip>
   );

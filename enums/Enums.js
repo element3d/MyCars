@@ -2938,7 +2938,7 @@ export class EBodyType {
         return "pickup";
     }
 
-    return "???";
+    return "";
   }
 }
 
@@ -2991,7 +2991,7 @@ export class EDriveType {
         return "all_wheel_drive";
     }
 
-    return "???";
+    return "";
   }
 }
 
@@ -3079,7 +3079,7 @@ export class ECarColor {
         return "purple";
     }
 
-    return "???";
+    return "";
   }
 
   static toColor(make) {
