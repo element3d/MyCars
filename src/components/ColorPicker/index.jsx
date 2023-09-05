@@ -2,16 +2,16 @@ import React from "react";
 import { Tooltip } from "antd";
 
 import styles from "./styles.module.css";
-import { getColorsKeyByValue } from "../dependencies/utils";
-import { COLOR_TYPES } from "../dependencies/constants";
+import { ECarColor } from "../../../Enums";
 
 const ColorPicker = ({ pickedColor }) => {
-  const customStyles = {
-    backgroundColor: pickedColor,
-    border: pickedColor === "#FFFFFF" ? "1px solid #ccc" : "none",
-  };
+  const color = ECarColor.toColor(pickedColor);
+  const colorName = ECarColor.toString(pickedColor)
 
-  const colorName = getColorsKeyByValue(pickedColor, COLOR_TYPES);
+  const customStyles = {
+    backgroundColor: color,
+    border: color === "white" ? "1px solid #ccc" : "none",
+  };
 
   return (
     <Tooltip placement="topLeft" title={colorName}>

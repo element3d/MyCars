@@ -1,14 +1,24 @@
 "use client";
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import styles from "./styles.module.css";
 import Link from "next/link";
 import Image from "next/image";
-import { Input } from "antd";
+import { Input, Select } from "antd";
 import { PlusCircleOutlined } from "@ant-design/icons";
 
 import Logo from "../../../public/images/icons-car-48.png";
+import RussianFlag from "../icon-components/RussianFlag";
+import EnglandFlag from "../icon-components/EnglandFlag";
+import i18n from "@/i18n";
 
 const TopBar = () => {
+  const handleLanguageChange = useCallback((lng) => {
+    i18n.changeLanguage(lng);
+
+    // UPDATE HTML'S LANGUAGE ATTRIBUTE
+    document.documentElement.lang = lng;
+  }, []);
+
   const [loading] = useState(false);
   const { Search } = Input;
   return (
@@ -30,6 +40,19 @@ const TopBar = () => {
         </div>
       </div>
       <div className={styles.rightContainer}>
+        <Select
+          placeholder="Model"
+          defaultValue="en"
+          className={styles.language}
+          onChange={handleLanguageChange}
+        >
+          <Select.Option value="ru">
+            <RussianFlag />
+          </Select.Option>
+          <Select.Option value="en">
+            <EnglandFlag />
+          </Select.Option>
+        </Select>
         <Link href="/add" className={styles.newAd}>
           <PlusCircleOutlined className={styles.plusIcon} />
           Sell

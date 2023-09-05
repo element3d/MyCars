@@ -10,7 +10,7 @@ const AddNewCarLocation = ({ setSelectInputValue, selectInputValue }) => {
   const cityRef = useRef(null);
   const handleChange = useCallback((value, selectName) => {
     setSelectInputValue((prev) => ({ ...prev, [selectName]: value }));
-  }, []);
+  }, [setSelectInputValue]);
 
   useEffect(() => {
     if (selectInputValue.mileage && cityRef.current) {

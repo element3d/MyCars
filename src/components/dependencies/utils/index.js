@@ -9,12 +9,3 @@ export function generateYearArrayFrom(fromYear) {
 
   return years;
 }
-
-export const getColorsKeyByValue = (value, colorTypes) => {
-  for (const key in colorTypes) {
-    if (colorTypes[key] === value) {
-      return key;
-    }
-  }
-  return null;
-};

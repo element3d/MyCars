@@ -17,7 +17,7 @@ const AddNewCarPriceDescription = ({
   const ref = useRef(null)
   useEffect(() => {
     setSelectInputValue((prev) => ({ ...prev, currency: "dollar" }));
-  }, []);
+  }, [setSelectInputValue]);
 
   useEffect(() => {
     if (selectInputValue.city && ref.current) {

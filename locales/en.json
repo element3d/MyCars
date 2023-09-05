@@ -1,0 +1,6 @@
+{
+  "greeting": "Hello, world!",
+  "welcome": "Welcome to our app.",
+  "calc": "this value is {{qty}}",
+  "carName": "Some Awesome Name"
+}

@@ -65,7 +65,7 @@ const AddNewCarPrimaryStats = ({
     return data.filter((brand) => {
       return brand?.toLowerCase().includes(searchValue?.toLowerCase());
     });
-  }, [searchValue]);
+  }, [data, searchValue]);
 
   useEffect(() => {
     if(modalIsMounted && inputRef.current) {
