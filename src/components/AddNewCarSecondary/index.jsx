@@ -1,31 +1,34 @@
 import React, { useCallback, useState } from "react";
 import { Collapse, Typography, Input } from "antd";
-import _debounce from 'lodash/debounce';
+import _debounce from "lodash/debounce";
 
 import styles from "./styles.module.css";
+import { generateYearArrayFrom } from "../dependencies/utils";
 import {
-  generateYearArrayFrom,
-  getColorsKeyByValue,
-} from "../dependencies/utils";
-import {
-  COLOR_TYPES,
   CarBodyTypes,
-  Colors,
   DriveConfiguration,
   EngineTypes,
   Transmission,
 } from "../dependencies/constants";
 import ColorPicker from "../ColorPicker";
+import { ECarColor } from "../../../Enums";
 
 const { Title } = Typography;
 
 const AddNewCarSecondary = ({ setSelectInputValue, selectInputValue }) => {
   const [open, setOpen] = useState();
 
-  const getSelectInputValue = useCallback((element, type, itemKey) => {
-    setSelectInputValue((prevState) => ({ ...prevState, [type]: element })),
-      setOpen((prev) => prev?.filter((key) => key !== itemKey));
-  }, []);
+  const getSelectInputValue = useCallback(
+    (element, type, collapseKey) => {
+      const colorElement = ECarColor.toString(element);
+      setSelectInputValue((prevState) => ({
+        ...prevState,
+        [type]: colorElement,
+      })),
+        setOpen((prev) => prev?.filter((key) => key !== collapseKey));
+    },
+    [setSelectInputValue]
+  );
 
   const debouncedHandleInputChange = useCallback(
     _debounce((value) => {
@@ -38,7 +41,6 @@ const AddNewCarSecondary = ({ setSelectInputValue, selectInputValue }) => {
     const value = e.target.value;
     debouncedHandleInputChange(value);
   };
-
 
   const items = [
     {
@@ -136,21 +138,21 @@ const AddNewCarSecondary = ({ setSelectInputValue, selectInputValue }) => {
       label: "Color",
       children: (
         <div className={styles.flexContainer}>
-          {Colors.map((color) => {
-            return (
-              <p
-                key={color}
-                onClick={() => getSelectInputValue(color, "color", "6")}
-              >
-                <ColorPicker pickedColor={color} />
-              </p>
-            );
-          })}
+          {[...Object.values(ECarColor)]
+            .filter((el) => el >= 0)
+            .map((colorId) => {
+              return (
+                <p
+                  key={colorId}
+                  onClick={() => getSelectInputValue(colorId, "color", "6")}
+                >
+                  <ColorPicker pickedColor={colorId} />
+                </p>
+              );
+            })}
         </div>
       ),
-      extra: (
-        <div>{getColorsKeyByValue(selectInputValue.color, COLOR_TYPES)}</div>
-      ),
+      extra: <div>{selectInputValue.color}</div>,
     },
   ];
   return (
