@@ -2,7 +2,7 @@ import React from "react";
 import { Tooltip } from "antd";
 
 import styles from "./styles.module.css";
-import { ECarColor } from "../../../Enums";
+import { ECarColor } from "../../../enums/Enums";
 
 const ColorPicker = ({ pickedColor }) => {
   const color = ECarColor.toColor(pickedColor);

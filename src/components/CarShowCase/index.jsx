@@ -4,7 +4,7 @@ import styles from "./styles.module.css";
 import CarouselCarImages from "../CarouselCarImages";
 import Title from "antd/es/typography/Title";
 import Text from "antd/es/typography/Text";
-import { EDriveType } from "../../../Enums";
+import { EDriveType } from "../../../enums/Enums";
 
 const CarShowCase = ({ car }) => {
   return (

@@ -14,7 +14,7 @@ const { Text } = Typography;
 const AddNewPostPage = () => {
   const submitButtonRef = useRef(null);
   const [selectInputValue, setSelectInputValue] = useState({
-    brand: "",
+    make: "",
     series: "",
     generation: "",
     model: "",

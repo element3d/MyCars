@@ -11,7 +11,7 @@ import {
   Transmission,
 } from "../dependencies/constants";
 import ColorPicker from "../ColorPicker";
-import { ECarColor } from "../../../Enums";
+import { ECarColor } from "../../../enums/Enums";
 
 const { Title } = Typography;
 
@@ -49,7 +49,7 @@ const AddNewCarSecondary = ({ setSelectInputValue, selectInputValue }) => {
       label: "Year",
       children: (
         <div className={styles.flexContainer}>
-          {generateYearArrayFrom(2000).map((el) => (
+          {generateYearArrayFrom(1990).map((el) => (
             <p key={el} onClick={() => getSelectInputValue(el, "year", "1")}>
               {el}
             </p>

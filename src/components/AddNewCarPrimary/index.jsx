@@ -1,8 +1,9 @@
 import React, { useCallback } from "react";
 
 import styles from "./styles.module.css";
-import { carBrands, modelsList, generations, series } from "./data";
 import AddNewCarPrimaryStats from "./AddNewCarPrimaryStats";
+import { gMakes } from "../../../enums/Makes";
+import { _getEMakeValues } from "../dependencies/utils";
 
 const AddNewCarPrimary = ({ setSelectInputValue, selectInputValue }) => {
   const handleAddItem = useCallback(
@@ -27,41 +28,57 @@ const AddNewCarPrimary = ({ setSelectInputValue, selectInputValue }) => {
     [setSelectInputValue]
   );
 
+  function getSeries() {
+    return Object.keys(gMakes[selectInputValue.make]);
+  }
+
+  function getGenerations() {
+    return Object.keys(gMakes[selectInputValue.make][selectInputValue.series]);
+  }
+
+  function getModels() {
+    return Object.keys(
+      gMakes[selectInputValue.make][selectInputValue.series][
+        selectInputValue.generation
+      ]
+    );
+  }
+
   return (
     <div className={styles.container}>
       <AddNewCarPrimaryStats
-        data={carBrands}
+        data={_getEMakeValues()}
         title="Brand"
-        type="brand"
+        type="make"
         onSelect={handleAddItem}
-        isComponentShouldSelect={selectInputValue}
+        selectInputValue={selectInputValue}
       />
 
-      {selectInputValue.brand && (
+      {selectInputValue.make && (
         <AddNewCarPrimaryStats
-          data={series}
+          data={getSeries()}
           title="Series"
           type="series"
           onSelect={handleAddItem}
-          isComponentShouldSelect={selectInputValue}
+          selectInputValue={selectInputValue}
         />
       )}
       {selectInputValue.series && (
         <AddNewCarPrimaryStats
-          data={generations}
+          data={getGenerations()}
           title="Generation"
           type="generation"
           onSelect={handleAddItem}
-          isComponentShouldSelect={selectInputValue}
+          selectInputValue={selectInputValue}
         />
       )}
       {selectInputValue.generation && (
         <AddNewCarPrimaryStats
-          data={modelsList}
+          data={getModels()}
           title="Model"
           type="model"
           onSelect={handleAddItem}
-          isComponentShouldSelect={selectInputValue}
+          selectInputValue={selectInputValue}
         />
       )}
     </div>

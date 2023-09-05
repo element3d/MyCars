@@ -1,12 +1,18 @@
-import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import Modal from "react-modal";
 
 import styles from "./styles.module.css";
 import { Input, Typography } from "antd";
 import { CloseOutlined } from "@ant-design/icons";
+import { _getTitle } from "@/components/dependencies/utils";
 
 const { Title } = Typography;
-
 
 const customStyles = {
   content: {
@@ -31,12 +37,12 @@ const AddNewCarPrimaryStats = ({
   title,
   type,
   onSelect,
-  isComponentShouldSelect: selectInputValue,
+  selectInputValue,
 }) => {
   const [modalIsOpen, setIsOpen] = useState(false);
   const [searchValue, setSearchValue] = useState(null);
   const [modalIsMounted, setModalIsMounted] = useState(false);
-  let inputRef = useRef(null)
+  let inputRef = useRef(null);
 
   const closeModal = useCallback(() => {
     setIsOpen(false);
@@ -46,10 +52,13 @@ const AddNewCarPrimaryStats = ({
     setIsOpen(true);
   }, []);
 
-  const handleCarBrandClick = useCallback((item) => {
-    setIsOpen(false);
-    onSelect(item, type);
-  }, [onSelect, type]);
+  const handleCarBrandClick = useCallback(
+    (item) => {
+      setIsOpen(false);
+      onSelect(item, type);
+    },
+    [onSelect, type]
+  );
 
   const handleInputChange = useCallback((e) => {
     setSearchValue(e.target.value);
@@ -62,18 +71,18 @@ const AddNewCarPrimaryStats = ({
     if (!searchValue) {
       return data;
     }
-    return data.filter((brand) => {
-      return brand?.toLowerCase().includes(searchValue?.toLowerCase());
+    return data.filter((element) => {
+      return element?.toLowerCase().includes(searchValue?.toLowerCase());
     });
   }, [data, searchValue]);
 
   useEffect(() => {
-    if(modalIsMounted && inputRef.current) {
+    if (modalIsMounted && inputRef.current) {
       inputRef.current.focus({
-        cursor: 'end',
+        cursor: "end",
       });
     }
-  }, [modalIsMounted])
+  }, [modalIsMounted]);
 
   return (
     <div className={styles.container}>
@@ -83,7 +92,7 @@ const AddNewCarPrimaryStats = ({
             {title}
           </Title>
           <Title level={3} onClick={openModal} className={styles.title}>
-            {selectInputValue[type]}
+            {_getTitle(selectInputValue[type], type)}
           </Title>
         </>
       ) : (
@@ -100,8 +109,8 @@ const AddNewCarPrimaryStats = ({
         <form>
           <Input
             ref={(_ref) => {
-              setModalIsMounted(true)
-              return (inputRef.current = _ref)
+              setModalIsMounted(true);
+              return (inputRef.current = _ref);
             }}
             value={searchValue}
             placeholder={title}
@@ -112,7 +121,7 @@ const AddNewCarPrimaryStats = ({
             {filteredCarsList &&
               filteredCarsList.sort().map((item) => (
                 <p key={item} onClick={() => handleCarBrandClick(item)}>
-                  {item}
+                  {_getTitle(item, type)}
                 </p>
               ))}
           </div>
