@@ -10,6 +10,7 @@ import Logo from "../../../public/images/icons-car-48.png";
 import RussianFlag from "../icon-components/RussianFlag";
 import EnglandFlag from "../icon-components/EnglandFlag";
 import i18n from "@/i18n";
+import ArmenianFlag from "../icon-components/ArmenianFlag";
 
 const TopBar = () => {
   const handleLanguageChange = useCallback((lng) => {
@@ -46,6 +47,9 @@ const TopBar = () => {
           className={styles.language}
           onChange={handleLanguageChange}
         >
+          <Select.Option value="am">
+            <ArmenianFlag />
+          </Select.Option>
           <Select.Option value="ru">
             <RussianFlag />
           </Select.Option>

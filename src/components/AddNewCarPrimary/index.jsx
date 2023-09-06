@@ -27,7 +27,7 @@ const AddNewCarPrimary = ({ setSelectInputValue, selectInputValue }) => {
     },
     [setSelectInputValue]
   );
-
+  
   function getSeries() {
     return Object.keys(gMakes[selectInputValue.make]);
   }

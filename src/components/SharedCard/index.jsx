@@ -5,12 +5,9 @@ import styles from "./styles.module.css";
 import { Typography } from "antd";
 import Link from "next/link";
 
-import { useTranslation } from 'react-i18next';
-
 const { Title } = Typography;
 
 const SharedCard = ({ images, id }) => {
-  const { t } = useTranslation();
   return (
     <Link
       target="_blank"
@@ -19,7 +16,7 @@ const SharedCard = ({ images, id }) => {
     >
       <ImageCard imageUrls={images} />
       <Title level={3} className={styles.title}>
-        {t('carName')}
+        Car name placeholder
       </Title>
     </Link>
   );

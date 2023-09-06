@@ -9,6 +9,9 @@ i18n.use(initReactI18next).init({
     ru: {
       translation: require("../locales/ru.json"),
     },
+    am: {
+      translation: require("../locales/am.json"),
+    },
   },
   lng: "en", // Default language
   fallbackLng: "en", // Fallback language

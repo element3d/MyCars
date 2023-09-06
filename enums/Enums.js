@@ -3191,7 +3191,7 @@ export class EProvince {
   static Ararat = 2;
   static Kotayk = 3;
   static Shirak = 4;
-  static Lorri = 5;
+  static Lori = 5;
   static Gegharkunik = 6;
   static Syunik = 7;
   static Aragatsotn = 8;
@@ -3216,8 +3216,8 @@ export class EProvince {
         return "kotayk";
       case EProvince.Shirak:
         return "shirak";
-      case EProvince.Lorri:
-        return "lorri";
+      case EProvince.Lori:
+        return "lori";
       case EProvince.Gegharkunik:
         return "gegharkunik";
       case EProvince.Syunik:

@@ -13,14 +13,12 @@ import { useQuery } from "@tanstack/react-query";
 import axiosInstance from "../../../../axiosInstance";
 import { GET_CAR_BY_ID } from "@/queries/get";
 import { Skeleton } from "antd";
+import { EEngine, EMake } from "../../../../enums/Enums";
 
 const CarPage = () => {
   const params = useParams();
 
-  const {
-    isLoading,
-    data: { data: allCars } = {},
-  } = useQuery({
+  const { isLoading, data: { data: allCars } = {} } = useQuery({
     queryKey: ["cars", "car.id"],
     queryFn: () => axiosInstance.get(`${GET_CAR_BY_ID}=${params.car}`),
   });
@@ -32,7 +30,10 @@ const CarPage = () => {
     <>
       <section className={styles.sectionLeft}>
         <BreadCrumb items={items} />
-        <Title>Car for sale {car?.make} {car?.submodel}, {car?.year}</Title>
+        <Title>
+          Car for sale {EMake.toString(car?.make)}{" "}
+          {EEngine.toString(car?.submodel)}, {car?.year}
+        </Title>
         {isLoading ? <Skeleton /> : <CarShowCase car={car} />}
         <div className={styles.carComments}>
           <Title level={2}>Seller Comments</Title>
