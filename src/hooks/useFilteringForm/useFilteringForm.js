@@ -25,7 +25,7 @@ export default function useFilteringForm() {
   }, [formData.make]);
 
   const getGenerations = useCallback(() => {
-    if (formData.series && formData.make) {
+    if (formData.make && formData.series) {
       return Object.keys(gMakes[formData.make][formData.series]);
     }
     return [];
@@ -68,6 +68,29 @@ export default function useFilteringForm() {
     label: EEngine.toString(element),
   }));
 
+  const clearStateNameBased = useCallback((name) => {
+    setFormData((prevState) => {
+      const updatedData = { ...prevState };
+      switch (name) {
+        case "make":
+          delete updatedData.series;
+          delete updatedData.generation;
+          delete updatedData.model;
+          break;
+        case "series":
+          delete updatedData.generation;
+          delete updatedData.model;
+          break;
+        case "generation":
+          delete updatedData.model;
+          break;
+        default:
+          break;
+      }
+      return updatedData;
+    });
+  }, []);
+
   const handleSubmit = useCallback(() => {
     //   SUBMIT FUNCTION HERE IF THERE WOULD BE ANY TYPE OF SUBMIT FUNCTIONALITY
   }, []);
@@ -77,6 +100,7 @@ export default function useFilteringForm() {
     handleFilteringFormChange,
     handleFormSelectChange,
     handleSubmit,
+    clearStateNameBased,
     allCarsArray,
     carSeriesArray,
     carGenerationsArray,

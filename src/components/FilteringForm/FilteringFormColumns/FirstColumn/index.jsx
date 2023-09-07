@@ -72,6 +72,7 @@ const FirstColumn = ({
       <Space.Compact>
         <Form.Item style={sx.noBottomMargin}>
           <Input
+            type="number"
             placeholder={t("power_from")}
             name="powerFrom"
             onChange={handleFilteringFormChange}
@@ -82,6 +83,7 @@ const FirstColumn = ({
         </Form.Item>
         <Form.Item style={sx.noBottomMargin}>
           <Input
+            type="number"
             placeholder={t("power_to")}
             name="powerTo"
             onChange={handleFilteringFormChange}

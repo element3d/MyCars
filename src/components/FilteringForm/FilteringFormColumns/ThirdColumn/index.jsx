@@ -58,6 +58,7 @@ const ThirdColumn = ({
       <Space.Compact>
         <Form.Item>
           <Input
+            type="number"
             placeholder={t("price_from")}
             className={styles.flexGrow}
             name="priceFrom"
@@ -67,6 +68,7 @@ const ThirdColumn = ({
         </Form.Item>
         <Form.Item>
           <Input
+            type="number"
             placeholder={t("price_to")}
             className={styles.flexGrow}
             name="priceTo"

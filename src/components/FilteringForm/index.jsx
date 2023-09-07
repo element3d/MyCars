@@ -38,8 +38,9 @@ const FilteringForm = () => {
 
   const {
     formData,
-    handleFilteringFormChange,
-    handleFormSelectChange,
+    handleFilteringFormChange = () => {},
+    handleFormSelectChange = () => {},
+    clearStateNameBased = () => {},
     allCarsArray,
     carSeriesArray,
     carGenerationsArray,
@@ -72,6 +73,8 @@ const FilteringForm = () => {
             carSeriesArray={carSeriesArray}
             carGenerationsArray={carGenerationsArray}
             carModelArray={carModelArray}
+            clearStateNameBased={clearStateNameBased}
+            formData={formData}
           />
         </div>
         <div className={styles.flexColumnsWrapper}>

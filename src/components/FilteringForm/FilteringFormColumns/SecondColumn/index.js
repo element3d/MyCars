@@ -56,6 +56,7 @@ const SecondsColumn = ({
       <Space.Compact>
         <Form.Item className={styles.flexGrow}>
           <Input
+            type="number"
             placeholder={t("mileage_from")}
             suffix={
               <Typography.Text type="secondary">{t("km")}</Typography.Text>
@@ -67,6 +68,7 @@ const SecondsColumn = ({
         </Form.Item>
         <Form.Item className={styles.flexGrow}>
           <Input
+            type="number"
             placeholder={t("mileage_to")}
             suffix={
               <Typography.Text type="secondary">{t("km")}</Typography.Text>
@@ -80,6 +82,7 @@ const SecondsColumn = ({
       <Space.Compact>
         <Form.Item className={styles.flexGrow} style={sx.noBottomMargin}>
           <Input
+            type="number"
             placeholder={t("acceleration_from")}
             suffix={
               <Typography.Text type="secondary">{t("sec")}</Typography.Text>
@@ -91,6 +94,7 @@ const SecondsColumn = ({
         </Form.Item>
         <Form.Item className={styles.flexGrow} style={sx.noBottomMargin}>
           <Input
+            type="number"
             placeholder={t("acceleration_to")}
             suffix={
               <Typography.Text type="secondary">{t("sec")}</Typography.Text>
