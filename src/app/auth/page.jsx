@@ -8,10 +8,11 @@ import Register from "@/components/auth/register";
 import { items, text1, text2, text3 } from "./data";
 import styles from "./styles.module.css";
 import Login from "@/components/auth/login";
+import { useTranslation } from "react-i18next";
 
 const UserAuthPage = () => {
   const [authMethod, setAuthMethod] = useState(AUTH_METHOD.LOGIN);
-
+  const { t } = useTranslation();
   return (
     <div className={styles.container}>
       <div className={styles.breadcrumb}>
@@ -29,13 +30,13 @@ const UserAuthPage = () => {
               className={styles.radioItem}
               value={AUTH_METHOD.LOGIN}
             >
-              Login
+              {t("login")}
             </Radio.Button>
             <Radio.Button
               className={styles.radioItem}
               value={AUTH_METHOD.REGISTRATION}
             >
-              Registration
+              {t('register')}
             </Radio.Button>
           </Radio.Group>
           {authMethod === AUTH_METHOD.REGISTRATION ? <Register /> : <Login />}

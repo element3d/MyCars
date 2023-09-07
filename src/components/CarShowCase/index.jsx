@@ -12,9 +12,11 @@ import {
   EModel,
   ETransmission,
 } from "../../../enums/Enums";
+import { STEERING_WHEEL } from "../dependencies/constants";
 
 const CarShowCase = ({ car }) => {
   const { t } = useTranslation();
+  const steeringWheel = STEERING_WHEEL.getString(car?.stearing_wheel);
   return (
     <div className={styles.carShowCaseWrapper}>
       <div className={styles.imageWrapper}>
@@ -25,22 +27,22 @@ const CarShowCase = ({ car }) => {
         <div className={styles.textWrapper}>
           <div className={styles.textRow}>
             <Text type="secondary" className={styles.secondaryText}>
-              Engine:
+              {t('engine')}:
             </Text>
             <Text className={styles.text}>
               {EEngineType.toString(car?.engine_type)}, {car?.engine_size}{" "}
-              {t("litre", "l")}
+              {t("liter_short")}
             </Text>
           </div>
           <div className={styles.textRow}>
             <Text type="secondary" className={styles.secondaryText}>
-              Power:
+              {t('power')}:
             </Text>
             <Text className={styles.text}>{car?.engine_power} hp</Text>
           </div>
           <div className={styles.textRow}>
             <Text type="secondary" className={styles.secondaryText}>
-              Transmission:
+              {t('transmission')}:
             </Text>
             <Text className={styles.text}>
               {t(ETransmission.toString(car?.transmission))}
@@ -48,15 +50,15 @@ const CarShowCase = ({ car }) => {
           </div>
           <div className={styles.textRow}>
             <Text type="secondary" className={styles.secondaryText}>
-              Drive Config:
+              {t('drive_type')}:
             </Text>
             <Text className={styles.text}>
-              {EDriveType.toString(car?.drive_type)}
+              {t(EDriveType.toString(car?.drive_type))}
             </Text>
           </div>
           <div className={styles.textRow}>
             <Text type="secondary" className={styles.secondaryText}>
-              Color:
+              {t('color')}:
             </Text>
             <Text className={styles.text}>
               {t(ECarColor.toString(car?.color))}
@@ -64,20 +66,19 @@ const CarShowCase = ({ car }) => {
           </div>
           <div className={styles.textRow}>
             <Text type="secondary" className={styles.secondaryText}>
-              Milage:
+              {t('mileage')}:
             </Text>
             <Text className={styles.text}>{car?.mileage} км</Text>
           </div>
           <div className={styles.textRow}>
             <Text type="secondary" className={styles.secondaryText}>
-              Steering Wheel:
+              {t('steering_wheel')}:
             </Text>
-            {/* TODO: CHANGE STEERING WHEEL */}
-            <Text className={styles.text}>{car?.stearing_wheel}</Text>
+            <Text className={styles.text}>{t(steeringWheel)}</Text>
           </div>
           <div className={styles.textRow}>
             <Text type="secondary" className={styles.secondaryText}>
-              Generation:
+              {t('model')}:
             </Text>
             <Text className={styles.text}>{EModel.toString(car?.model)}</Text>
           </div>

@@ -24,6 +24,7 @@ const ThirdColumn = ({
   handleFormSelectChange,
 }) => {
   const { t } = useTranslation();
+
   return (
     <>
       <Space.Compact>

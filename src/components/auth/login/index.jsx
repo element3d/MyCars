@@ -1,14 +1,32 @@
 import React, { useCallback } from "react";
-import { Button, Form, Input, Typography } from "antd";
+import { Button, Form, Input, Spin, Typography } from "antd";
 
 import styles from "./styles.module.css";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useLoginMutation } from "@/queries/mutations/authMutations";
 const { Title } = Typography;
 
 const Login = () => {
-  const onFinish = useCallback((values) => {
-    console.log("Success:", values);
-  }, []);
+  const router = useRouter();
+  const {
+    mutate: login,
+    isLoading,
+    error,
+    isError,
+  } = useLoginMutation({
+    onSuccess: (data) => {
+      localStorage.setItem("access_token", data.data);
+      router.back();
+    },
+  });
+
+  const onFinish = useCallback(
+    (values) => {
+      login({ username: values.username, password: values.password });
+    },
+    [login]
+  );
 
   const onFinishFailed = useCallback((errorInfo) => {
     console.log("Failed:", errorInfo);
@@ -29,9 +47,9 @@ const Login = () => {
       >
         <Form.Item
           className={styles.formItem}
-          label="Username"
+          label="Phone"
           name="username"
-          rules={[{ required: true, message: "Please input your username!" }]}
+          rules={[{ required: true, message: "Please input your Phone!" }]}
         >
           <Input />
         </Form.Item>
@@ -45,11 +63,21 @@ const Login = () => {
           <Input.Password />
         </Form.Item>
 
-        <Form.Item className={styles.submitButton}>
-          <Button type="primary" htmlType="submit">
-            Submit
-          </Button>
-        </Form.Item>
+        {isError && (
+          <Typography.Text type="danger">
+            Error: {error.message}
+          </Typography.Text>
+        )}
+
+        {isLoading ? (
+          <Spin />
+        ) : (
+          <Form.Item className={styles.submitButton}>
+            <Button type="primary" htmlType="submit">
+              Submit
+            </Button>
+          </Form.Item>
+        )}
       </Form>
       <div>
         <Title level={5}>Other login methods</Title>

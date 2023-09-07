@@ -65,6 +65,10 @@ export const ENGINE_POWER = [
 export const STEERING_WHEEL = {
   LEFT_WHEEL: 0,
   RIGHT_WHEEL: 1,
+  getString: function (number) {
+    if (this.LEFT_WHEEL === number) return "left";
+    if (this.RIGHT_WHEEL === number) return "right";
+  },
 };
 
 export const CLEANED_CUSTOMS = {
