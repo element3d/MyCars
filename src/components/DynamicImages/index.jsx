@@ -23,7 +23,7 @@ const ImageCard = ({ imageUrls }) => {
       onMouseOut={handleMouseOut}
     >
       <Image
-        src={`${process.env.NEXT_PUBLIC_IMAGE_BASE_URI}/${imageUrls[hoveredImageIndex].uri}`}
+        src={`${process.env.NEXT_PUBLIC_IMAGE_BASE_URI}/${imageUrls[hoveredImageIndex]?.uri}`}
         alt="Car"
         width={250}
         height={250}

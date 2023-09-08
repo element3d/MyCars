@@ -3183,6 +3183,23 @@ export class EAutoPartNoteStatus {
   static Viewed = 1;
 }
 
+export class ECountry {
+  static Armenia = 0;
+  static Abroad = 1;
+  static IsUnderway = 2;
+
+  static toString(country) {
+    switch (country) {
+      case ECountry.Armenia:
+        return "Armenia";
+      case ECountry.Abroad:
+        return "Abroud";
+      case ECountry.IsUnderway:
+        return "Is Underway";
+    }
+  }
+}
+
 export class EProvince {
   static None = -2;
   static All = -1;

@@ -3,11 +3,10 @@ import { Input, Select, Space, Checkbox, Typography } from "antd";
 import { DollarOutlined } from "@ant-design/icons";
 
 import styles from "./styles.module.css";
-import DramIcon from "../icon-components/DramIcon";
 
 const options = [
   { label: "Dollar", value: "dollar", icon: <DollarOutlined /> },
-  { label: "Dram", value: "dram", icon: <DramIcon /> },
+  // { label: "Dram", value: "dram", icon: <DramIcon /> },
 ];
 
 const AddNewCarPriceDescription = ({
@@ -27,10 +26,11 @@ const AddNewCarPriceDescription = ({
 
   const handleChange = useCallback((e) => {
     const { name, value, checked } = e.target;
+    const checkedValue = checked ? 1 : 0;
 
     setSelectInputValue((prev) => ({
       ...prev,
-      [name]: name === "isExchangeAvailable" ? checked : value,
+      [name]: name === "exchange" ? checkedValue : value,
     }));
   }, [setSelectInputValue]);
 
@@ -65,8 +65,8 @@ const AddNewCarPriceDescription = ({
           </Select>
         </Space.Compact>
         <Checkbox
-          checked={selectInputValue.isExchangeAvailable}
-          name="isExchangeAvailable"
+          checked={selectInputValue.exchange}
+          name="exchange"
           onChange={handleChange}
           className={styles.checkbox}
         >
@@ -78,7 +78,7 @@ const AddNewCarPriceDescription = ({
           Your Comments
         </Typography.Title>
         <Input.TextArea
-          name="comments"
+          name="description"
           placeholder="About the car. Maximum 800 words"
           autoSize={{ minRows: 2, maxRows: 12 }}
           maxLength={800}

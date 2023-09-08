@@ -2,7 +2,9 @@ import React, { useCallback, useEffect, useRef } from "react";
 import { Select, Typography } from "antd";
 
 import styles from "./styles.module.css";
-import { locationCity, locationCountries, locationProvince } from "./data";
+import { locationCity } from "./data";
+import { ECountry, EProvince } from "../../../enums/Enums";
+import { removeNegativeRepetitiveArr } from "../dependencies/utils";
 
 const { Title } = Typography;
 
@@ -18,6 +20,15 @@ const AddNewCarLocation = ({ setSelectInputValue, selectInputValue }) => {
     }
   }, [selectInputValue.mileage]);
 
+  function getCountry() {
+    return Object.values(ECountry).map((el) => ({value: el, label: ECountry.toString(el)}));
+  }
+
+  function getProvince() {
+    const mappedProvinces = Object.values(EProvince);
+    return removeNegativeRepetitiveArr(mappedProvinces).map((province) => ({value: province, label: EProvince.toString(province)}));
+  }
+
   return (
     <div className={styles.container}>
       <div className={styles.locationContainer} ref={cityRef}>
@@ -27,7 +38,7 @@ const AddNewCarLocation = ({ setSelectInputValue, selectInputValue }) => {
           size="large"
           onChange={(value) => handleChange(value, "country")}
           style={{ width: "100%" }}
-          options={locationCountries}
+          options={getCountry()}
           value={selectInputValue["country"]}
         />
       </div>
@@ -39,7 +50,7 @@ const AddNewCarLocation = ({ setSelectInputValue, selectInputValue }) => {
           size="large"
           onChange={(value) => handleChange(value, "province")}
           style={{ width: "100%" }}
-          options={locationProvince}
+          options={getProvince()}
         />
       </div>
 
@@ -48,7 +59,8 @@ const AddNewCarLocation = ({ setSelectInputValue, selectInputValue }) => {
         <Select
           placeholder="Input city"
           size="large"
-          onChange={(value) => handleChange(value, "city")}
+          // TODO: EXPLICITLY SENDING 0 AS YEREVAN, FIX LATER WHEN SUB PROVINCE GETS TO_STRING METHOD
+          onChange={() => handleChange(0, "city")}
           style={{ width: "100%" }}
           options={locationCity}
           value={selectInputValue["city"]}

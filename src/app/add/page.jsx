@@ -20,11 +20,13 @@ const AddNewPostPage = () => {
     submodel: "",
     year: "",
     body_type: "",
-    engine: "",
-    driveConfiguration: "",
+    engine_type: "",
+    drive_type: "",
     transmission: "",
     color: "",
     currency: "",
+    country: "",
+    description: ""
   });
 
   const [fileList, setFileList] = useState([]);
@@ -79,7 +81,7 @@ const AddNewPostPage = () => {
             />
           )}
 
-          {selectInputValue.city && (
+          {selectInputValue.city !== undefined && (
             <AddNewCarPriceDescription
               setSelectInputValue={setSelectInputValue}
               selectInputValue={selectInputValue}

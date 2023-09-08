@@ -11,9 +11,9 @@ import { carsList, items, text1, text2 } from "./data";
 import RecommendedCar from "@/components/RecommendedCar";
 import { useQuery } from "@tanstack/react-query";
 import axiosInstance from "../../../../axiosInstance";
-import { GET_CAR_BY_ID } from "@/queries/get";
 import { Skeleton } from "antd";
 import { EEngine, EMake } from "../../../../enums/Enums";
+import { GET_CAR_BY_ID } from "@/components/dependencies/constants";
 
 const CarPage = () => {
   const params = useParams();
@@ -22,7 +22,7 @@ const CarPage = () => {
     queryKey: ["cars", "car.id"],
     queryFn: () => axiosInstance.get(`${GET_CAR_BY_ID}=${params.car}`),
   });
-
+  
   const { cars: carsArr } = allCars || {};
   const [car] = carsArr || [];
 

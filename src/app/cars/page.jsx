@@ -6,9 +6,9 @@ import SharedCard from "@/components/SharedCard";
 import BreadCrumb from "@/components/BreadCrumb";
 import { items } from "./data";
 import { useQuery } from "@tanstack/react-query";
-import { GET_ALL_CARS } from "@/queries/get";
 import axiosInstance from "../../../axiosInstance";
 import { Skeleton } from "antd";
+import { GET_ALL_CARS } from "@/components/dependencies/constants";
 
 function HomePage() {
   const { data: { data: allCars } = {}, isLoading } = useQuery({

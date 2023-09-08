@@ -80,38 +80,38 @@ const AddNewCarSecondary = ({ setSelectInputValue, selectInputValue }) => {
       key: "2",
       label: "Body",
       children: RenderCollapseItem(
-        "body",
+        "body_type",
         "2",
         bodiesArray,
         EBodyType,
         getSelectInputValue
       ),
-      extra: <div>{EBodyType.toString(selectInputValue.body)}</div>,
+      extra: <div>{EBodyType.toString(selectInputValue.body_type)}</div>,
     },
     {
       key: "3",
       label: "Engine",
       children: RenderCollapseItem(
-        "engine",
+        "engine_type",
         "3",
         enginesArray,
         EEngineType,
         getSelectInputValue
       ),
-      extra: <div>{t(EEngineType.toString(selectInputValue.engine))}</div>,
+      extra: <div>{t(EEngineType.toString(selectInputValue.engine_type))}</div>,
     },
     {
       key: "4",
       label: "Drive Configuration",
       children: RenderCollapseItem(
-        "driveConfiguration",
+        "drive_type",
         "4",
         driveTypeArray,
         EDriveType,
         getSelectInputValue
       ),
       extra: (
-        <div>{t(EDriveType.toString(selectInputValue.driveConfiguration))}</div>
+        <div>{t(EDriveType.toString(selectInputValue.drive_type))}</div>
       ),
     },
     {
