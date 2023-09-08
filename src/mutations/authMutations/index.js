@@ -1,6 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
 
-const { default: axiosInstance } = require("../../../../axiosInstance");
+const { default: axiosInstance } = require("../../../axiosInstance");
 
 const LOGIN_QUERY = "/signin";
 

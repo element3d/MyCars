@@ -4,7 +4,7 @@ import { Button, Form, Input, Spin, Typography } from "antd";
 import styles from "./styles.module.css";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useLoginMutation } from "@/queries/mutations/authMutations";
+import { useLoginMutation } from "@/mutations/authMutations";
 const { Title } = Typography;
 
 const Login = () => {
