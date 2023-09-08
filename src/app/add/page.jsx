@@ -15,11 +15,11 @@ const AddNewPostPage = () => {
   const submitButtonRef = useRef(null);
   const [selectInputValue, setSelectInputValue] = useState({
     make: "",
-    series: "",
-    generation: "",
+    class: "",
     model: "",
+    submodel: "",
     year: "",
-    body: "",
+    body_type: "",
     engine: "",
     driveConfiguration: "",
     transmission: "",
@@ -30,10 +30,10 @@ const AddNewPostPage = () => {
   const [fileList, setFileList] = useState([]);
   console.log("fileList", fileList);
 
-  const onFinish = useCallback((values) => {
-    console.log("values", values);
-    // TODO: upload photos to api
-  }, []);
+  const onFinish = useCallback(() => {
+
+    console.log('selectInputValue', selectInputValue)
+  }, [selectInputValue]);
 
   const getUploadData = useCallback((data, options) => {
     setFileList(data);
@@ -58,7 +58,7 @@ const AddNewPostPage = () => {
             selectInputValue={selectInputValue}
           />
 
-          {selectInputValue.model && (
+          {selectInputValue.submodel && (
             <AddNewCarSecondary
               setSelectInputValue={setSelectInputValue}
               selectInputValue={selectInputValue}

@@ -28,18 +28,18 @@ const AddNewCarPrimary = ({ setSelectInputValue, selectInputValue }) => {
     [setSelectInputValue]
   );
   
-  function getSeries() {
+  function getClass() {
     return Object.keys(gMakes[selectInputValue.make]);
   }
 
-  function getGenerations() {
-    return Object.keys(gMakes[selectInputValue.make][selectInputValue.series]);
+  function getModels() {
+    return Object.keys(gMakes[selectInputValue.make][selectInputValue.class]);
   }
 
-  function getModels() {
+  function getSubModels() {
     return Object.keys(
-      gMakes[selectInputValue.make][selectInputValue.series][
-        selectInputValue.generation
+      gMakes[selectInputValue.make][selectInputValue.class][
+        selectInputValue.model
       ]
     );
   }
@@ -56,27 +56,27 @@ const AddNewCarPrimary = ({ setSelectInputValue, selectInputValue }) => {
 
       {selectInputValue.make && (
         <AddNewCarPrimaryStats
-          data={getSeries()}
+          data={getClass()}
           title="Series"
-          type="series"
+          type="class"
           onSelect={handleAddItem}
           selectInputValue={selectInputValue}
         />
       )}
-      {selectInputValue.series && (
-        <AddNewCarPrimaryStats
-          data={getGenerations()}
-          title="Generation"
-          type="generation"
-          onSelect={handleAddItem}
-          selectInputValue={selectInputValue}
-        />
-      )}
-      {selectInputValue.generation && (
+      {selectInputValue.class && (
         <AddNewCarPrimaryStats
           data={getModels()}
-          title="Model"
+          title="Generation"
           type="model"
+          onSelect={handleAddItem}
+          selectInputValue={selectInputValue}
+        />
+      )}
+      {selectInputValue.model && (
+        <AddNewCarPrimaryStats
+          data={getSubModels()}
+          title="Model"
+          type="submodel"
           onSelect={handleAddItem}
           selectInputValue={selectInputValue}
         />

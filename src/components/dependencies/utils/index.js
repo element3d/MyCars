@@ -14,9 +14,9 @@ export function generateYearArrayFrom(fromYear) {
 
 export function _getTitle(item, type) {
   if (type === "make") return EMake.toString(item);
-  else if (type === "series") return ESerie.toString(item);
-  else if (type === "generation") return EModel.toString(item);
-  else if (type === "model") return EEngine.toString(item);
+  else if (type === "class") return ESerie.toString(item);
+  else if (type === "model") return EModel.toString(item);
+  else if (type === "submodel") return EEngine.toString(item);
 }
 
 export function _getEMakeValues() {
