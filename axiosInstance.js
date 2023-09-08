@@ -6,22 +6,22 @@ const axiosInstance = axios.create({
   headers: {
     "Content-Type": "application/json",
   },
-  withCredentials: false,
+  withCredentials: false, // TODO: INVESTIGATE IF WE NEED THIS PROPERTY
 });
 
-// axiosInstance.interceptors.request.use(
-//   (config) => {
-//     if (typeof window !== 'undefined') {
-//       const accessToken = localStorage.getItem("access_token");
-//       if (accessToken) {
-//         config.headers["Authorization"] = `Bearer ${accessToken}`;
-//       }
-//     }
-//     return config;
-//   },
-//   (error) => {
-//     return Promise.reject(error);
-//   },
-// );
+axiosInstance.interceptors.request.use(
+  (config) => {
+    if (typeof window !== "undefined") {
+      const accessToken = localStorage.getItem("access_token");
+      if (accessToken) {
+        config.headers["Authentication"] = accessToken;
+      }
+    }
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  },
+);
 
 export default axiosInstance;

@@ -1,12 +1,13 @@
 "use client";
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import { Typography, Button, Form } from "antd";
+import { Typography, Button, Form, Spin } from "antd";
 
 import AddNewCarPrimary from "@/components/AddNewCarPrimary";
 import AddNewCarSecondary from "@/components/AddNewCarSecondary";
 import AddNewCarPhoto from "@/components/AddNewCarPhoto";
 import AddNewCarLocation from "@/components/AddNewCarLocation";
 import AddNewCarPriceDescription from "@/components/AddNewCarPriceDescription";
+import { usePostCarMutation } from "@/mutations/autoMutations";
 import styles from "./styles.module.css";
 
 const { Text } = Typography;
@@ -18,24 +19,26 @@ const AddNewPostPage = () => {
     class: "",
     model: "",
     submodel: "",
-    year: "",
-    body_type: "",
-    engine_type: "",
-    drive_type: "",
-    transmission: "",
-    color: "",
-    currency: "",
-    country: "",
-    description: ""
+    year: null,
+    body_type: null,
+    engine_type: null,
+    drive_type: null,
+    transmission: null,
+    color: null,
+    currency: null,
+    country: null,
+    description: "",
+    customs_cleared: null,
   });
 
   const [fileList, setFileList] = useState([]);
   console.log("fileList", fileList);
 
-  const onFinish = useCallback(() => {
+  const { mutate: postCar, isError, error, isLoading } = usePostCarMutation();
 
-    console.log('selectInputValue', selectInputValue)
-  }, [selectInputValue]);
+  const onFinish = useCallback(() => {
+    postCar(selectInputValue);
+  }, [postCar, selectInputValue]);
 
   const getUploadData = useCallback((data, options) => {
     setFileList(data);
@@ -88,12 +91,18 @@ const AddNewPostPage = () => {
             />
           )}
 
+          {isError && <Typography.Text>{error.message}</Typography.Text>}
+
           {selectInputValue.price && (
             <div ref={submitButtonRef}>
               <Form.Item wrapperCol={{ offset: 9 }}>
-                <Button type="primary" htmlType="submit">
-                  Add New Post
-                </Button>
+                {isLoading ? (
+                  <Spin />
+                ) : (
+                  <Button type="primary" htmlType="submit">
+                    Add New Post
+                  </Button>
+                )}
               </Form.Item>
             </div>
           )}

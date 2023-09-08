@@ -13,7 +13,8 @@ const AddNewCarPriceDescription = ({
   setSelectInputValue,
   selectInputValue,
 }) => {
-  const ref = useRef(null)
+  const ref = useRef(null);
+
   useEffect(() => {
     setSelectInputValue((prev) => ({ ...prev, currency: "dollar" }));
   }, [setSelectInputValue]);
@@ -24,15 +25,24 @@ const AddNewCarPriceDescription = ({
     }
   }, [selectInputValue.city]);
 
-  const handleChange = useCallback((e) => {
-    const { name, value, checked } = e.target;
-    const checkedValue = checked ? 1 : 0;
+  const handleChange = useCallback(
+    (e) => {
+      const { name, value, checked } = e.target;
+      const checkedValue = checked ? 1 : 0;
+      const customsCheckedValue = checked ? 1 : 0;
 
-    setSelectInputValue((prev) => ({
-      ...prev,
-      [name]: name === "exchange" ? checkedValue : value,
-    }));
-  }, [setSelectInputValue]);
+      setSelectInputValue((prev) => {
+        if (name === "exchange") {
+          return { ...prev, exchange: checkedValue };
+        } else if (name === "customs_cleared") {
+          return { ...prev, customs_cleared: customsCheckedValue };
+        } else {
+          return { ...prev, [name]: value };
+        }
+      });
+    },
+    [setSelectInputValue]
+  );
 
   return (
     <div className={styles.container}>
@@ -40,7 +50,6 @@ const AddNewCarPriceDescription = ({
         <Typography.Title placeholder="Input city" level={3}>
           Price
         </Typography.Title>
-
         <Space.Compact className={styles.priceDescriptionBoxSpace}>
           <Input type="number" name="price" onChange={handleChange} />
           <Select
@@ -64,14 +73,24 @@ const AddNewCarPriceDescription = ({
             ))}
           </Select>
         </Space.Compact>
-        <Checkbox
-          checked={selectInputValue.exchange}
-          name="exchange"
-          onChange={handleChange}
-          className={styles.checkbox}
-        >
-          Exchange is available
-        </Checkbox>
+        <Space.Compact>
+          <Checkbox
+            checked={selectInputValue.exchange}
+            name="exchange"
+            onChange={handleChange}
+            className={styles.checkbox}
+          >
+            Exchange is available
+          </Checkbox>
+          <Checkbox
+            checked={selectInputValue.customs_cleared}
+            name="customs_cleared"
+            onChange={handleChange}
+            className={styles.checkbox}
+          >
+            Customs is cleared
+          </Checkbox>
+        </Space.Compact>
       </div>
       <div className={styles.priceDescriptionBox} ref={ref}>
         <Typography.Title placeholder="Input city" level={3}>

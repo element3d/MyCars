@@ -27,10 +27,9 @@ const AddNewCarSecondary = ({ setSelectInputValue, selectInputValue }) => {
 
   const getSelectInputValue = useCallback(
     (element, type, collapseKey) => {
-      const colorElement = ECarColor.toString(element);
       setSelectInputValue((prevState) => ({
         ...prevState,
-        [type]: type === "color" ? colorElement : element,
+        [type]: element,
       })),
         setOpen((prev) => prev?.filter((key) => key !== collapseKey));
     },
@@ -53,15 +52,22 @@ const AddNewCarSecondary = ({ setSelectInputValue, selectInputValue }) => {
   const bodiesArray = removeNegativeRepetitiveArr([
     ...Object.values(EBodyType),
   ]);
+
   const enginesArray = removeNegativeRepetitiveArr([
     ...Object.values(EEngineType),
   ]);
+
   const driveTypeArray = removeNegativeRepetitiveArr([
     ...Object.values(EDriveType),
   ]);
+
   const transmissionTypeArray = removeNegativeRepetitiveArr([
     ...Object.values(ETransmission),
   ]);
+
+  const colorsArray = removeNegativeRepetitiveArr(
+    [...Object.values(ECarColor)].filter((el) => el >= 0)
+  );
 
   const items = [
     {
@@ -110,9 +116,7 @@ const AddNewCarSecondary = ({ setSelectInputValue, selectInputValue }) => {
         EDriveType,
         getSelectInputValue
       ),
-      extra: (
-        <div>{t(EDriveType.toString(selectInputValue.drive_type))}</div>
-      ),
+      extra: <div>{t(EDriveType.toString(selectInputValue.drive_type))}</div>,
     },
     {
       key: "5",
@@ -133,23 +137,22 @@ const AddNewCarSecondary = ({ setSelectInputValue, selectInputValue }) => {
       label: "Color",
       children: (
         <div className={styles.flexContainer}>
-          {[...Object.values(ECarColor)]
-            .filter((el) => el >= 0)
-            .map((colorId) => {
-              return (
-                <p
-                  key={colorId}
-                  onClick={() => getSelectInputValue(colorId, "color", "6")}
-                >
-                  <ColorPicker pickedColor={colorId} />
-                </p>
-              );
-            })}
+          {colorsArray.map((colorId) => {
+            return (
+              <span
+                key={colorId}
+                onClick={() => getSelectInputValue(colorId, "color", "6")}
+              >
+                <ColorPicker pickedColor={colorId} />
+              </span>
+            );
+          })}
         </div>
       ),
-      extra: <div>{selectInputValue.color}</div>,
+      extra: <div>{ECarColor.toString(selectInputValue.color)}</div>,
     },
   ];
+
   return (
     <div className={styles.container}>
       <Title level={2} className={styles.title}>

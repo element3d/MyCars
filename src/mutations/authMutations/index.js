@@ -1,8 +1,6 @@
+import { LOGIN_QUERY } from "@/components/dependencies/constants";
 import { useMutation } from "@tanstack/react-query";
-
-const { default: axiosInstance } = require("../../../axiosInstance");
-
-const LOGIN_QUERY = "/signin";
+import axiosInstance from "../../../axiosInstance";
 
 const login = async ({ username, password }) => {
   try {

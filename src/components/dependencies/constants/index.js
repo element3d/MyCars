@@ -76,6 +76,8 @@ export const CLEANED_CUSTOMS = {
   YES: 1,
 };
 
+// **QUERY CONSTANTS**
 export const GET_ALL_CARS = "/cars";
-
 export const GET_CAR_BY_ID = "/car?car_id";
+export const LOGIN_QUERY = "/signin";
+export const POST_CAR = "/cars";
